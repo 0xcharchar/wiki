@@ -1,0 +1,27 @@
+= WTF is a DAO =
+
+*D* ecentralized
+*A* utonomous
+*O* rganization
+
+That still doesn't mean a thing, does it? The original intent, as far as I know, was an organization centralized around a piece of code. The code controlled finalized decision making, usually from a vote.
+
+This is no longer the case.
+
+Plenty of groups are spinning up a token and calling themselves a DAO by having a Discord channel. Not a bad thing but it really muddys the water around terminology.
+
+So.
+
+== What can a DAO be? ==
+
+Maybe we break down each word, out of order.
+
+=== Organization ===
+
+This is easy. Any collection of people that are organized around one thing. This could be a football club, a FinTech startup, or prisoners picking up trash in the park.
+
+=== Decentralized ===
+
+A slightly trickier word that is often confused with _Distributed_. Decentralized means there is no central 'thing'. No office or multiple offices. No vault or multiple vaults. No central piece of code or multiple bits of code forming a thing.
+
+Something decentralized has no center. You could take part away and it would still function. It doesn't have to function well but must continue.

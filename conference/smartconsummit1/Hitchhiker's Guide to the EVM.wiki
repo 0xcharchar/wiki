@@ -1,0 +1,40 @@
+= Hitchhiker's Guide to the EVM =
+
+[[https://twitter.com/alexroan|@alexroan on Twitter]]
+
+== Don't read storage variables too often ==
+
+* better to create a `memory` variable and set its value to the storage variable
+* update the storage variable at the end, if needed
+
+== Pack your structs ==
+
+* 32 is the magic number
+* storage slots are 32 bytes each (`SSTORE`/`SLOAD`)
+* order of a struct matters:
+  {{{class="solidity"
+    // inefficient storage, uses 3 slots
+    `address wallet   // SLOT 1 20/32`
+    `address backup   // SLOT 2 20/32`
+    `uint96 first     // SLOT 2 32/32`
+    `uint96 sec       // SLOT 3 12/32`
+    
+    // efficient storage, uses 2 slots
+    `address wallet   // SLOT 1 20/32`
+    `uint96 first     // SLOT 1 32/32`
+    `address backup   // SLOT 2 20/32`
+    `uint96 sec       // SLOT 2 32/32`
+  }}}
+  
+== Use `constant` or `immutable` ==
+
+* this has huge gas savings benefits
+* making `constructor` initialized variables immutable when there are no plans to update
+
+== Don't store unneccesary data ==
+
+* try to use events instead
+
+== Make variables obvious ==
+
+* an example: Chainlink uses `s_` for storage variables

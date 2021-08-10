@@ -1,0 +1,18 @@
+= More Building Blocks: The Next Generation of Money Legos =
+
+Panel:
+
+* Guillaume from 88mph:
+  * 
+* Jae-Uyn Kim from Superblock:
+  * working on synthetic asset protocol
+* James Song from Fleta:
+  * launched Fleta Connect, a DeFi protocol
+  * launching an AMM and Dex
+* Bette Chen from Acala:
+  * blockchain built on Polkadot with EVM compatibility
+* Yan Meng from Solv Protocol:
+  * financial NFTs: create/mint/sell NFTs
+  * create voucher which is a collection of tokens in an NFT:
+    * can be traded or used as collateral
+  * uses Chainlink for price feed and Keepers for some automation

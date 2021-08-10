@@ -1,0 +1,31 @@
+= An Optimistic Build =
+
+_I missed the first half of this talk_
+
+About building/deploying on Optimism L2
+
+By Justin Moses
+
+== Contract Management Gotchas ==
+
+* block size is 24kb
+* no selfDestruct
+* uses wETHA
+
+== Deployment ==
+
+* no gas price or limit because the L1 is unknown
+
+== Testing ==
+
+* unit testing doesn't change (can still use hardhat for example)
+* integration:
+  * L1 tests using geth
+  * L2 using geth OVM
+  * combined uses both nodes
+
+== Ownership ==
+
+* multisig can live on L1
+* messages relayed into L2
+* avoids multisig on L2 (helps move across L2 without moving the wallet around)

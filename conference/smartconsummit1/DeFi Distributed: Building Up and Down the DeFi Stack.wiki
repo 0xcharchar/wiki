@@ -1,0 +1,21 @@
+= DeFi Distributed: Building up and Down the DeFi Stack =
+
+Panel Participants:
+
+* Yenwen Feng from Perpetual Protocol:
+  * trading 20b on the platform
+  * moving to Arbitrum
+* James Qu from LatticeX Foundation:
+  * Private AI and data networkA
+  * Using Chainlink for financial data
+  * Attempting to stop miner front-running
+* Nick Ravanbakhsh from Base Protocol:
+  * Base is a token that tracks overall crypto market cap
+  * Uses Chainlink to get verifiable market cap (as a trusted oracle)
+  * Started using Keeper for automating updates to the Base price
+* Young il Kim from Danal Fintech:
+  * 2m user base
+  * works with 7-11, Dominos pizza
+  * trying to make DeFi easy for consumers
+  * using Chainlink pricefeed to figure out conversion raet between coins
+  * using CCIP

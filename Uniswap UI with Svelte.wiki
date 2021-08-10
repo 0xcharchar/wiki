@@ -1,0 +1,6 @@
+= Uniswap UI with Svelte =
+
+Interesting things about Uniswap UI:
+
+* background gradient is a giant div with a radial gradient
+* 

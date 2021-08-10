@@ -1,0 +1,32 @@
+= Gitcoin Quests =
+
+== A New Hope for OSS Sustainability ==
+
+Quest link: https://gitcoin.co/quests/141/sustain-web3-a-new-hope-for-oss-sustainability
+Video: https://www.youtube.com/watch?v=qG9yWRCn_NM&t=398s
+
+* 96% of internet applications use open source
+* 11% - 57% of codebases are open source
+* $387 billion market cap (10x of ETH at the time)
+* not high-enough pay to do OSS fulltime
+* donation buttons on repos to get some support, github funding (centralized)
+* Gitcoin experiments:
+  * Gitcoin Grants - allocating 1.2m to projects per year (for 2020), eventually called Quadratic Funding
+  * DAOs - MolochDAO was the Minimum Viable DAO:
+    * forked by many (MetaCartel, MetaVentures, etc)
+    * DAO can work like a focussed Gitcoin Grant by raising funds for types of issues
+  * Block Rewards Funding - EIP-1789 suggest 10% increase in block rewards which goes to funding developers (at $100m a year)
+  * OSCoin, SourceCred - reward contributions to a repository
+
+== MetaGame Knowledge Quest ==
+
+https://gitcoin.co/quests/174/metagame-knowledge-quest
+
+1. In search of commonts that scale
+2. On gamification
+3. The comiing of MetaGame
+4. WTF is MetaGame
+5. The Decentralized Factory
+6. The Web of Opportunity
+7. The way of Web3 founders
+8. How to become a founder of MetaGame

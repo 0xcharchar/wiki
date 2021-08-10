@@ -1,0 +1,20 @@
+= Smart Contract Developer Speedrun =
+
+Players:
+* austintgriffith -> scaffold-eth/keeper
+* Zer0dot
+
+== Any ERC20 ==
+
+Goal: Ship an ERC20 coin called SmartCoin with 1000? and 18 decimals
+
+Both used OpenZepplin ERC20 contracts.
+
+The winner used Remix which allowed them to deploy way quicker (code writing was a bit slow from what I could see)
+
+== 100% reactive NFT ==
+
+Implement ERC721 that copies a value from another into your storage. The other contract updates a counter
+
+* scaffold-eth gives you a web UI for testing and it shows all of the contrct data in a browser (mind-fucking-blowing for me)
+* remix is still the fastest way to build a contract but you miss out on all the other tools

@@ -1,0 +1,14 @@
+= The Smart Contract Stack: Powering DAOs =
+
+* Ricardian contract:
+  * https://en.wikipedia.org/wiki/Ricardian_contract
+  * works as an actual contract (lawyers <3 it), readable, and uses markup
+* Deep DAO -> site to see details about DAOs:
+  * https://deepdao.io
+* LAO -> legal dao
+* OpenLaw helps you create DAOs and then interact with crypto and trad money people
+* Chainlink prints the outside data to chain
+* took screenshot in home folder
+* daos will be $$
+* DAOs will have traditional assets?
+* asset diversification through defi

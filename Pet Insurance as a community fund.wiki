@@ -1,0 +1,35 @@
+= Pet Insurance DAO =
+
+CALL IT PETS.INSURANCE FOR THE MEMES
+
+== Goals ==
+
+* visible pool of funds for transparency
+* clear claim rulings
+* community governance with vote delegation:
+  * probably a governance token like Gitcoin
+* transparent raising/lowering of monthly fees:
+  * fees are based on size of fund with the goal of lowering fees over time
+  * use DeFi to increase fund (with goal of lowering fees)
+* pay professionals to review claims
+* equal payments for all participants
+
+== "Business Case" ==
+
+This isn't a business, its a community fund, but we should know how much insurance companies make to understand if we can do better.
+
+Insight pages:
+
+* https://www.gminsights.com/industry-analysis/pet-insurance-market
+* https://www.fortunebusinessinsights.com/industry-reports/pet-insurance-market-101956
+* https://www.owler.com/company/petinsurance
+* https://www.grandviewresearch.com/industry-analysis/pet-insurance-market
+
+== Ethereum Insurance DAOs/Companies ==
+
+* https://mutualdao.org/en/about.html
+* https://nexusmutual.io/
+
+== Spinup ==
+
+Use ICO to build initial pool of funds? Early investors become governance token holders?

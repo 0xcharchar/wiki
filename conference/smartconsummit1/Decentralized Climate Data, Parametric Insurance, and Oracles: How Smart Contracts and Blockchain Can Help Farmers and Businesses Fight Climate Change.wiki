@@ -1,0 +1,25 @@
+= Decentralized Climate Data, Parametric Insurance, and Oracles: How Smart Contracts and Blockchain Can Help Farmers and Businesses Fight Climate Change =
+
+_The fucking title of this talk._
+
+dClimate [[https://twitter.com/dClimateNet|Twitter]] [[https://dclimate.net|Web]]
+arbol [[https://arbolemarket.com|Web]]
+
+* climate data helps businesses run and decentralizing it makes it more open
+* 70% of global GDP is affected by weather
+* many people in the world are one catastrophe away from irreversible loss
+* historical data can be used for modelling and predicting
+* building:
+  * API for pulling climate data
+  * "Construction App" -> "Worksite weather risk calculator"
+  * actionable data and insights
+* Chainlink used for data validation (data validation is a specialized skillset)
+* Chainlink also used for governance
+* how smart contracts/blockchain help fight climate change:
+  * developing nations get access to immutable data and insurance products (open data)
+  * many businesses can't handle one natural catastrophe
+  * parametric insurance powered by oracles/immutable data/blockchain helps insurance company and businesses:
+    * reduces need for disaster aid
+    * insurance can pay out much quicker and more accurate
+    * businesses up and running sooner
+  * oracles essential to getting immutable/standardized data

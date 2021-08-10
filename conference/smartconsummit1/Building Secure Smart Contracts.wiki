@@ -1,0 +1,54 @@
+= Building Secure Smart Contracts =
+
+* two main sources of bugs:
+  * infrastructure (protocols/evm)
+  * smart contracts
+* known vulnerabilities and exploits:
+  * timestamp dependence and manipulation:
+    * can be manipulated by a miner for a small window
+    * solutions:
+      * don't use timestamps
+      * use `block.number` -> estimate time
+  * unexpected ether:
+    * can't protect against other contracts using `selfDestruct()`, which is a unreversable function
+    * if logic requires control of ether, it will likely break
+    * solution:
+      * don't use `this.balance`
+      * logic should be built to track ether independently of what contract has
+  * Tx.Origin:
+    * can be used by malicious contract to trigger functinos
+    * solution:
+      * don't use `tx.origin` for authorization
+  * delegateCall:
+    * this guy is too fast, check paritywallet hack
+    * solution:
+      * use library contracts
+  * overflow/underflow attack:
+    * wrapping integers can cause problems
+    * Beauty Ecosystem Coin
+    * solution:
+      * use SafeMath
+      * use solidity v0.8.0+
+  * DoS attack:
+    * make contract inoperable or trap ether
+    * giving a user control over the execution of a contract via external call or data structures that have loops
+    * solution:
+      * use multi-sig contract
+      * don't loop through uncontrolled structures
+      * time locked resets
+  * Race conditions / front running:
+    * MEV
+    * running a contract with higher gas usage
+    * solutions:
+      * modify upper bound on gas prices
+      * use a commit-reveal scheme
+      * chainlink FSS
+  * re-entrancy attack:
+    * sends ether to a contract
+    * solution:
+      * use `transfer` when sending to another contract
+      * ensure all logic changes state first
+      * use a mutex
+    * see The DAO hack
+
+I missed the last part of the talk :(

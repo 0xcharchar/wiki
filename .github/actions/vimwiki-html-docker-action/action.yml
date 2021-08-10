@@ -1,0 +1,5 @@
+name: 'Vimwiki2HTML'
+description: 'Use vim to turn vimwiki content into HTML'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

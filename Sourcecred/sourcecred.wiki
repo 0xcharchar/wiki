@@ -1,0 +1,13 @@
+= Sourcecred =
+
+Link: 
+
+== Possible plugins ==
+
+* track what invited code was used to join a discord:
+  * this should give limited cred
+  * should include an exclusion list of users and/or hashtags to reduce ill-intentioned farming
+  * https://discord.com/developers/docs/resources/audit-log
+* on twitter, check likes/retweets under certain hashtags and/or users:
+  * this should give limited cred
+  * should include an exclusion list of users and/or hashtags to reduce ill-intentioned farming

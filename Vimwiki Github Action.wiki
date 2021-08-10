@@ -1,0 +1,36 @@
+= Vimwiki Github Action =
+
+So I've got a vimwiki. Now I want to make it a website. I have no interest in doing this manually.
+
+== Vim setup ==
+
+There is a `:VimwikiAll2HTML` vim command. This requires:
+
+* a template (done, added to [[/templates/default.html]]
+* changes to *.vimrc*:
+  {{{vim
+		let g:vimwiki_list = [{
+			\ 'path': '/path/to/wiki',
+			\ 'template_path': '/path/to/wiki/templates',
+			\ 'template_default': 'default',
+			\ 'template_ext': '.html'}]
+	}}}
+* it is possible to run the html command from the shell:
+  {{{sh
+  vim +VimwikiAll2HTML +quit index.wiki
+  }}}
+* When the HTML is generated, it defaults to *vimwiki_html/*. I assume this is because the default installation uses *vimwiki/* as the wiki location. 
+
+== Problems to solve ==
+
+* The CSS is not grabbed from the templates directory, afaik. It is possible to pre-create the vimwiki_html folder and drop a CSS file in.
+* How the fuck to create a Github action:
+  * https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action
+
+== Log ==
+
+* have a simple image based on alpine that:
+  * installs git and vim
+  * creates a new user/group
+  * switches to new user
+* trying to clone vimwiki plugin is not working, getting: "could not create work tree dir"
