@@ -59,6 +59,12 @@ Stuff I am keeping an eye on but probably not working on directly
 * [[Moonshot Collective]]
 * [[https://www.upupland.xyz/|upupland]] - view into various crypto projects
 
+== Contracts ==
+
+* [[Pudgy Penguins]]
+* [[Bored Ape Yacht Club]]
+* [[Pixelglyphs]]
+
 == Conference Notes ==
 
 === Smart Contract Summit 1 (2021 ===
