@@ -1,3 +1,3 @@
 #!/bin/sh
 
-vim +VimwikiAll2HTML +quit $HOME/vimwiki/index.wiki
+vim --not-a-term +VimwikiAll2HTML +quit $HOME/vimwiki/index.wiki
