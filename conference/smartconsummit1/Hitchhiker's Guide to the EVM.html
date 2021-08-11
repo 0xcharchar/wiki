@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Hitchhiker's Guide to the EVM</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <main>
+      
+<div id="Hitchhiker's Guide to the EVM"><h1 id="Hitchhiker's Guide to the EVM" class="header"><a href="#Hitchhiker's Guide to the EVM">Hitchhiker's Guide to the EVM</a></h1></div>
+
+<p>
+<a href="https://twitter.com/alexroan">@alexroan on Twitter</a>
+</p>
+
+<div id="Hitchhiker's Guide to the EVM-Don't read storage variables too often"><h2 id="Don't read storage variables too often" class="header"><a href="#Hitchhiker's Guide to the EVM-Don't read storage variables too often">Don't read storage variables too often</a></h2></div>
+
+<ul>
+<li>
+better to create a <code>memory</code> variable and set its value to the storage variable
+
+<li>
+update the storage variable at the end, if needed
+
+</ul>
+
+<div id="Hitchhiker's Guide to the EVM-Pack your structs"><h2 id="Pack your structs" class="header"><a href="#Hitchhiker's Guide to the EVM-Pack your structs">Pack your structs</a></h2></div>
+
+<ul>
+<li>
+32 is the magic number
+
+<li>
+storage slots are 32 bytes each (<code>SSTORE</code>/<code>SLOAD</code>)
+
+<li>
+order of a struct matters:
+<pre class="solidity">
+    // inefficient storage, uses 3 slots
+    `address wallet   // SLOT 1 20/32`
+    `address backup   // SLOT 2 20/32`
+    `uint96 first     // SLOT 2 32/32`
+    `uint96 sec       // SLOT 3 12/32`
+    
+    // efficient storage, uses 2 slots
+    `address wallet   // SLOT 1 20/32`
+    `uint96 first     // SLOT 1 32/32`
+    `address backup   // SLOT 2 20/32`
+    `uint96 sec       // SLOT 2 32/32`
+</pre>
+
+</ul>
+  
+<div id="Hitchhiker's Guide to the EVM-Use `constant` or `immutable`"><h2 id="Use `constant` or `immutable`" class="header"><a href="#Hitchhiker's Guide to the EVM-Use `constant` or `immutable`">Use <code>constant</code> or <code>immutable</code></a></h2></div>
+
+<ul>
+<li>
+this has huge gas savings benefits
+
+<li>
+making <code>constructor</code> initialized variables immutable when there are no plans to update
+
+</ul>
+
+<div id="Hitchhiker's Guide to the EVM-Don't store unneccesary data"><h2 id="Don't store unneccesary data" class="header"><a href="#Hitchhiker's Guide to the EVM-Don't store unneccesary data">Don't store unneccesary data</a></h2></div>
+
+<ul>
+<li>
+try to use events instead
+
+</ul>
+
+<div id="Hitchhiker's Guide to the EVM-Make variables obvious"><h2 id="Make variables obvious" class="header"><a href="#Hitchhiker's Guide to the EVM-Make variables obvious">Make variables obvious</a></h2></div>
+
+<ul>
+<li>
+an example: Chainlink uses <code>s_</code> for storage variables
+
+</ul>
+
+    </main>
+  </body>
+</html>

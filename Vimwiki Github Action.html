@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Vimwiki Github Action</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <main>
+      
+<div id="Vimwiki Github Action"><h1 id="Vimwiki Github Action" class="header"><a href="#Vimwiki Github Action">Vimwiki Github Action</a></h1></div>
+
+<p>
+So I've got a vimwiki. Now I want to make it a website. I have no interest in doing this manually.
+</p>
+
+<div id="Vimwiki Github Action-Vim setup"><h2 id="Vim setup" class="header"><a href="#Vimwiki Github Action-Vim setup">Vim setup</a></h2></div>
+
+<p>
+There is a <code>:VimwikiAll2HTML</code> vim command. This requires:
+</p>
+
+<ul>
+<li>
+a template (done, added to <a href="templates/default.html">/templates/default.html</a>
+
+<li>
+changes to <span id="Vimwiki Github Action-Vim setup-.vimrc"></span><strong id=".vimrc">.vimrc</strong>:
+<pre vim>
+		let g:vimwiki_list = [{
+			\ 'path': '/path/to/wiki',
+			\ 'template_path': '/path/to/wiki/templates',
+			\ 'template_default': 'default',
+			\ 'template_ext': '.html'}]
+</pre>
+
+<li>
+it is possible to run the html command from the shell:
+<pre sh>
+  vim +VimwikiAll2HTML +quit index.wiki
+</pre>
+
+<li>
+When the HTML is generated, it defaults to <span id="Vimwiki Github Action-Vim setup-vimwiki_html/"></span><strong id="vimwiki_html/">vimwiki_html/</strong>. I assume this is because the default installation uses <span id="Vimwiki Github Action-Vim setup-vimwiki/"></span><strong id="vimwiki/">vimwiki/</strong> as the wiki location. 
+
+</ul>
+
+<div id="Vimwiki Github Action-Problems to solve"><h2 id="Problems to solve" class="header"><a href="#Vimwiki Github Action-Problems to solve">Problems to solve</a></h2></div>
+
+<ul>
+<li>
+The CSS is not grabbed from the templates directory, afaik. It is possible to pre-create the vimwiki_html folder and drop a CSS file in.
+
+<li>
+How the fuck to create a Github action:
+
+<ul>
+<li>
+<a href="https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action">https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action</a>
+
+</ul>
+</ul>
+
+<div id="Vimwiki Github Action-Log"><h2 id="Log" class="header"><a href="#Vimwiki Github Action-Log">Log</a></h2></div>
+
+<ul>
+<li>
+have a simple image based on alpine that:
+
+<ul>
+<li>
+installs git and vim
+
+<li>
+creates a new user/group
+
+<li>
+switches to new user
+
+</ul>
+<li>
+trying to clone vimwiki plugin is not working, getting: "could not create work tree dir"
+
+</ul>
+
+    </main>
+  </body>
+</html>

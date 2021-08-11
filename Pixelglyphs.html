@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pixelglyphs</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <main>
+      
+<div id="Pixelglyphs"><h1 id="Pixelglyphs" class="header"><a href="#Pixelglyphs">Pixelglyphs</a></h1></div>
+
+<p>
+<a href="https://etherscan.io/address/0xf38d6bf300d52ba7880b43cddb3f94ee3c6c4ea6">Etherscan</a>
+<a href="https://www.pixelglyphs.io/">Site</a>
+</p>
+
+<ul>
+<li>
+10k unique NFTs
+
+<li>
+on-chain NFT, created at random during minting
+
+<li>
+comes with an ENS subdomain
+
+</ul>
+
+<pre class="solidity">
+contract PixelGlyphs is ERC721Enumerable, Ownable {
+  using ECDSA for bytes32;
+
+  uint256 spriteSize = 10;
+  uint256 globalId = 0;
+  address SIGNER;
+  uint256 public PRICE_PER_MINT = 0.009 ether;
+  uint256 public PRICE_PER_NAME = 0.0025 ether;
+  string BASE_URI;
+  uint256 public namingBlockStart;
+  uint256 public namingBlockEnd;
+  mapping(uint256 =&gt; string) public names;
+
+  constructor(address signer, string memory baseUri)
+    ERC721("PixelGlyphs", "PxG")
+  {
+    SIGNER = signer;
+    BASE_URI = baseUri;
+  }
+
+  event Created(
+    uint256 indexed tokenId,
+    uint256[5][10] glyph,
+    uint256[3][3] colors
+  );
+
+  event Named(uint256 indexed tokenId, string name);
+
+  function nameGlyph(uint256 tokenId, string memory name) public payable {
+    require(msg.value == PRICE_PER_NAME);
+    require(ownerOf(tokenId) == msg.sender);
+    require(block.number &gt;= namingBlockStart &amp;&amp; block.number &lt;= namingBlockEnd);
+    names[tokenId] = name;
+    emit Named(tokenId, name);
+  }
+
+  // This will begin The Great Naming Ceremony
+  function setNamingBlock(uint256 blockNumber) public onlyOwner {
+    require(namingBlockStart == 0, "PxG: Naming ceremony has already begun");
+    namingBlockStart = blockNumber;
+    // The Great Naming Ceremony will last approximately 5 days
+    namingBlockEnd = blockNumber + (6357 * 3);
+  }
+
+  function _mintInternal(
+    uint256[] memory seed,
+    uint256[] memory cSeed,
+    bytes32 uuid,
+    uint256 timestamp,
+    bytes memory sig,
+    address to
+  ) internal {
+    bytes32 hash = keccak256(abi.encodePacked(seed, cSeed, timestamp, uuid));
+    require(
+      hash.toEthSignedMessageHash().recover(sig) == SIGNER,
+      "PxG: Invalid signature"
+    );
+    require(globalId &lt; 10000, "PxG: All glyphs minted");
+    uint256[5][10] memory matrix;
+    for (uint256 i = 0; i &lt; spriteSize; i++) {
+      uint256[5] memory row;
+      matrix[i] = row;
+      if (i == 0 || i == spriteSize - 1) continue;
+      row[0] = 0;
+
+      for (uint256 j = 1; j &lt; row.length; j++) {
+        row[j] = seed[i * row.length + j] % 2;
+      }
+    }
+
+    for (uint256 index = 0; index &lt; 2; index++) {
+      matrix = step(matrix);
+    }
+
+    uint256[3][3] memory colors;
+
+    for (uint256 i = 0; i &lt; colors.length; i++) {
+      for (uint256 j = 0; j &lt; colors[i].length; j++) {
+        colors[i][j] = cSeed[i * 3 + j] % 255;
+      }
+    }
+
+    _safeMint(to, ++globalId);
+
+    emit Created(globalId, matrix, colors);
+  }
+
+  function mintTo(
+    uint256[] memory seed,
+    uint256[] memory cSeed,
+    bytes32 uuid,
+    uint256 timestamp,
+    bytes memory sig,
+    address to
+  ) public onlyOwner {
+    _mintInternal(seed, cSeed, uuid, timestamp, sig, to);
+  }
+
+  function setBaseUri(string memory baseUri) public onlyOwner {
+    BASE_URI = baseUri;
+  }
+
+  function _baseURI() internal view virtual override returns (string memory) {
+    return BASE_URI;
+  }
+
+  function mint(
+    uint256[][] memory seeds,
+    uint256[][] memory cSeeds,
+    bytes32[] memory uuids,
+    uint256 timestamp,
+    bytes[] memory sigs
+  ) public payable {
+    require(seeds.length == cSeeds.length, "PxG: Arrays do not match");
+    require(uuids.length == seeds.length, "PxG: Arrays do not match");
+    require(sigs.length == seeds.length, "PxG: Arrays do not match");
+    require(msg.value == PRICE_PER_MINT * seeds.length, "PxG: Incorrect value");
+    require(block.timestamp &lt;= timestamp + 6 hours);
+    for (uint256 i = 0; i &lt; seeds.length; i++) {
+      _mintInternal(
+        seeds[i],
+        cSeeds[i],
+        uuids[i],
+        timestamp,
+        sigs[i],
+        msg.sender
+      );
+    }
+  }
+
+  mapping(address =&gt; uint256) public equipped;
+
+  event Equip(address indexed owner, uint256 tokenId);
+
+  function equip(uint256 tokenId) public {
+    require(ownerOf(tokenId) == msg.sender, "PxG: Must be owner to equip");
+    equipped[msg.sender] = tokenId;
+    emit Equip(msg.sender, tokenId);
+  }
+
+  function _beforeTokenTransfer(
+    address from,
+    address to,
+    uint256 tokenId
+  ) internal override {
+    super._beforeTokenTransfer(from, to, tokenId);
+    if (equipped[from] == tokenId) {
+      delete equipped[from];
+      emit Equip(msg.sender, 0);
+    }
+  }
+
+  function countNeighbors(
+    uint256[5][10] memory matrix,
+    uint256 x,
+    uint256 y
+  ) internal pure returns (uint256) {
+    uint256 count = 0;
+    // check left
+    if (matrix[y][x - 1] &gt; 0) {
+      count++;
+    }
+    // check right
+    if (x &lt; matrix[y].length - 1 &amp;&amp; matrix[y][x + 1] &gt; 0) {
+      count++;
+    }
+    // check top
+    if (y &gt; 0 &amp;&amp; matrix[y - 1][x] &gt; 0) {
+      count++;
+    }
+    // check bottom
+    if (y &lt; matrix.length - 1 &amp;&amp; matrix[y + 1][x] &gt; 0) {
+      count++;
+    }
+    return count;
+  }
+
+  function step(uint256[5][10] memory prev)
+    internal
+    pure
+    returns (uint256[5][10] memory)
+  {
+    uint256[5][10] memory next;
+    uint256 size = prev.length;
+
+    for (uint256 y = 0; y &lt; size; y++) {
+      uint256[5] memory row;
+      next[y] = row;
+      if (y == 0 || y == size - 1) continue;
+      row[0] = 0;
+
+      for (uint256 x = 1; x &lt; row.length; x++) {
+        uint256 n = countNeighbors(prev, x, y);
+        row[x] = prev[y][x] == 0 ? (n &lt;= 1 ? 1 : 0) : n == 2 || n == 3 ? 1 : 0;
+      }
+    }
+    return next;
+  }
+
+  function withdraw(address sendTo) public onlyOwner {
+    uint256 balance = address(this).balance;
+    payable(sendTo).transfer(balance);
+  }
+
+  function updateSigner(address signer) public onlyOwner {
+    SIGNER = signer;
+  }
+
+  function updatePricePerMint(uint256 price) public onlyOwner {
+    PRICE_PER_MINT = price;
+  }
+
+  function setGenerationString(bytes calldata str) public onlyOwner {}
+}
+</pre>
+
+    </main>
+  </body>
+</html>
