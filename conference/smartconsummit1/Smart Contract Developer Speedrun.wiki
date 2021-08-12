@@ -1,8 +1,10 @@
 = Smart Contract Developer Speedrun =
 
+Host: Stephen Fluin [[https://twitter.com/stephenfluin|@stephenfluin]]
+
 Players:
-* austintgriffith -> scaffold-eth/keeper
-* Zer0dot
+* Austin Griffith [[https://twitter.com/austingriffith|@austingriffith]] -> scaffold-eth/keeper
+* [[https://twitter.com/Zer0dots|@Zer0dots]]
 
 == Any ERC20 ==
 

@@ -34,3 +34,9 @@ There is a `:VimwikiAll2HTML` vim command. This requires:
   * creates a new user/group
   * switches to new user
 * trying to clone vimwiki plugin is not working, getting: "could not create work tree dir"
+* fixed but only works on github at the moment (which is fine with me)
+
+== Links ==
+
+* https://www.rosipov.com/blog/custom-templates-in-vimwiki/
+* https://www.jorgee.net/blog/2015-11-04/

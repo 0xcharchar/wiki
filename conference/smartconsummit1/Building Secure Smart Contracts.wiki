@@ -1,5 +1,7 @@
 = Building Secure Smart Contracts =
 
+Speaker: Harry Papacharissiou [[https://twitter.com/pappas9999|@pappas9999 on Twitter]]
+
 * two main sources of bugs:
   * infrastructure (protocols/evm)
   * smart contracts

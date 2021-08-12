@@ -64,6 +64,7 @@ Stuff I am keeping an eye on but probably not working on directly
 * [[Pudgy Penguins]]
 * [[Bored Ape Yacht Club]]
 * [[Pixelglyphs]]
+* [[Blackhole Bet]]
 
 == Conference Notes ==
 
@@ -72,12 +73,11 @@ Stuff I am keeping an eye on but probably not working on directly
 * [[/conference/smartconsummit1/The Smart Contract Stack: Powering DAOs|The Smart Contract Stack: Powering DAOs]]
 * [[/conference/smartconsummit1/Hitchhiker's Guide to the EVM|Hitchhiker's Guide to the EVM]]
 * [[/conference/smartconsummit1/Building Secure Smart Contracts|Building Secure Smart Contracts]]
-* [[/conference/smartconsummit1/Smart Contract Developer Speedrun|Smart Contract Developer Speedrun]]]
+* [[/conference/smartconsummit1/Smart Contract Developer Speedrun|Smart Contract Developer Speedrun]]
 * [[/conference/smartconsummit1/An Optimistic Build|An Optimistic Build]]
 * [[/conference/smartconsummit1/Decentralized Climate Data, Parametric Insurance, and Oracles: How Smart Contracts and Blockchain Can Help Farmers and Businesses Fight Climate Change|Decentralized Climate Data, Parametric Insurance, and Oracles: How Smart Contracts and Blockchain Can Help Farmers and Businesses Fight Climate Change]]
 * [[/conference/smartconsummit1/DeFi Distributed: Building Up and Down the DeFi Stack|DeFi Distributed: Building Up and Down the DeFi Stack]]
 * [[/conference/smartconsummit1/More Building Blocks: The Next Generation of Money Legos|More Building Blocks: The Next Generation of Money Legos]]
-* [[/conference/smartconsummit1/Evolution of the Metaverse: Building Bridges to the Real World|Evolution of the Metaverse: Building Bridges to the Real World]]
 
 == Misc ==
 

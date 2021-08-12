@@ -2,8 +2,10 @@
 
 _The fucking title of this talk._
 
+Speaker: Sid Jha
+
 dClimate [[https://twitter.com/dClimateNet|Twitter]] [[https://dclimate.net|Web]]
-arbol [[https://arbolemarket.com|Web]]
+arbol [[https://arbolemarket.com|Web]] [[https://twitter.com/ArbolMarket|Twitter]]
 
 * climate data helps businesses run and decentralizing it makes it more open
 * 70% of global GDP is affected by weather

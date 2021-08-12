@@ -4,7 +4,7 @@ _I missed the first half of this talk_
 
 About building/deploying on Optimism L2
 
-By Justin Moses
+By Justin J. Moses [[https://twitter.com/justinjmoses|@justinjmoses]]
 
 == Contract Management Gotchas ==
 

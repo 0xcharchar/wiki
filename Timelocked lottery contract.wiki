@@ -2,4 +2,4 @@
 
 So, we start the contract off with a bunch of Ethereum. The eth will be available for withdrawl after a certain amount of time but to release it, you must send in a small eth fee. The eth fee will build the next pot. _Hopefully_ enough people send a request at the same time, essentially racing for the reward, that there is enough eth to make the next pot decent.
 
-This is such a dumb idea.
+This is such a dumb idea. Easily broken by miners because of timestamp manipulation.

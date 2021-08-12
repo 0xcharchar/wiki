@@ -1,5 +1,7 @@
 = The Smart Contract Stack: Powering DAOs =
 
+Speaker: Aaron Wright [[https://twitter.com/awrigh01|@awrigh01 on Twitter]]
+
 * Ricardian contract:
   * https://en.wikipedia.org/wiki/Ricardian_contract
   * works as an actual contract (lawyers <3 it), readable, and uses markup

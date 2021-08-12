@@ -1,8 +1,6 @@
 = Read later =
 
 * https://medium.com/token-engineering-commons/transparency-in-daos-999b17b0ff74
-* https://www.jorgee.net/blog/2015-11-04/
-* https://www.rosipov.com/blog/custom-templates-in-vimwiki/
 * https://www.windley.com/archives/2015/09/personal_learning_systems_and_life-long_learning.shtml
 * https://eips.ethereum.org/EIPS/eip-2535#simple-summary
 * https://gittron.me/about
@@ -20,3 +18,4 @@
 * https://www.youtube.com/watch?v=v1Z5BnBuFye
 * https://trello.com/b/qDaciNgF/moonshot-collective
 * https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/
+* https://www.gbm.auction/
