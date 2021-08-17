@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Eggrypto</title>
+    <link rel="stylesheet" type="text/css" href="/wiki/style.css" />
+  </head>
+
+  <body>
+    <main>
+      
+<div id="Eggrypto"><h1 id="Eggrypto" class="header"><a href="#Eggrypto">Eggrypto</a></h1></div>
+
+<p>
+The team uses an upgradeable contract and a proxy: <a href="https://etherscan.io/address/0x42b4a7db1ed930198bc37971b33e86f19ce88600">Etherscan</a> or <a href="https://polygonscan.com/address/0x42b4a7db1ed930198bc37971b33e86f19ce88600">Polygonscan</a>.
+</p>
+
+<p>
+The ERC721 contract currently being called is: <a href="https://etherscan.io/address/0xd699c87e346a8d62caf0e07fe9a31fdeeb47dea5">https://etherscan.io/address/0xd699c87e346a8d62caf0e07fe9a31fdeeb47dea5</a>
+</p>
+
+<p>
+Contract is the most layered ERC721 that I have seen to date. Deployed contract is really short, the minting function is actually inherited.
+</p>
+
+<p>
+Purely setup code in this contract.
+</p>
+
+<pre class="solidity">
+contract StandaloneERC721
+    is Initializable, ERC721, ERC721Enumerable, ERC721Metadata, ERC721MetadataMintable, ERC721Pausable
+{
+    function initialize(string memory name, string memory symbol, address[] memory minters, address[] memory pausers) public initializer {
+        ERC721.initialize();
+        ERC721Enumerable.initialize();
+        ERC721Metadata.initialize(name, symbol);
+
+        // Initialize the minter and pauser roles, and renounce them
+        ERC721MetadataMintable.initialize(address(this));
+        _removeMinter(address(this));
+
+        ERC721Pausable.initialize(address(this));
+        _removePauser(address(this));
+
+        // Add the requested minters and pausers (this can be done after renouncing since
+        // these are the internal calls)
+        for (uint256 i = 0; i &lt; minters.length; ++i) {
+            _addMinter(minters[i]);
+        }
+
+        for (uint256 i = 0; i &lt; pausers.length; ++i) {
+            _addPauser(pausers[i]);
+        }
+    }
+}
+</pre>
+
+<p>
+Contract that does the minting (seems to be an OpenZepplin contract):
+</p>
+
+<pre class="solidity">
+contract ERC721MetadataMintable is Initializable, ERC721, ERC721Metadata, MinterRole {
+    function initialize(address sender) public initializer {
+        require(ERC721._hasBeenInitialized());
+        require(ERC721Metadata._hasBeenInitialized());
+        MinterRole.initialize(sender);
+    }
+
+    /**
+     * @dev Function to mint tokens.
+     * @param to The address that will receive the minted tokens.
+     * @param tokenId The token id to mint.
+     * @param tokenURI The token URI of the minted token.
+     * @return A boolean that indicates if the operation was successful.
+     */
+    function mintWithTokenURI(address to, uint256 tokenId, string memory tokenURI) public onlyMinter returns (bool) {
+        _mint(to, tokenId);
+        _setTokenURI(tokenId, tokenURI);
+        return true;
+    }
+
+    uint256[50] private ______gap;
+}
+</pre>
+
+<p>
+The <code>______gap</code> enables library upgrades without breaking user contracts. See <a href="https://forum.openzeppelin.com/t/what-exactly-is-the-reason-for-uint256-50-private-gap/798">this forum post</a>
+</p>
+
+    </main>
+  </body>
+</html>
