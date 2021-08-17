@@ -37,17 +37,16 @@ Below is a list of projects I have worked on or am working on.
 * [[Uniswap UI with Svelte]]
 * [[Vimwiki Github Action]]
 * [[WebAlert NFT]]
+* [[How I start a project]]
 
 == Decentralized ==
 
 * [[WTF is a DAO]]
 * [[Zero Knowledge]]
 
-== Bounties ==
+== KERNEL ==
 
-Bounties I am interested in, working on, or worked on.
-
-* [[BadgerDAO - Revamp Sett.Vision Into The Portfolio View]]
+* [[Junto Interview - Value]]
 
 == Watching ==
 
@@ -65,6 +64,7 @@ Stuff I am keeping an eye on but probably not working on directly
 * [[Bored Ape Yacht Club]]
 * [[Pixelglyphs]]
 * [[Blackhole Bet]]
+* [[Eggrypto]]
 
 == Conference Notes ==
 
@@ -86,3 +86,5 @@ Stuff I am keeping an eye on but probably not working on directly
 * [[Quests]]
 
 == Scratchpad ==
+
+* overloaded functions in ethers are 'fun': https://docs.ethers.io/v5/single-page/#/v5/migration/web3/-%23-migration-from-web3-js--contracts--overloaded-functions

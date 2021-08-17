@@ -19,3 +19,5 @@
 * https://trello.com/b/qDaciNgF/moonshot-collective
 * https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/
 * https://www.gbm.auction/
+* Vector DAO
+* Manifold Creator https://manifoldxyz.substack.com/p/manifold-creator
