@@ -1,0 +1,12 @@
+= Decentralized Governance Hackathon =
+
+* [[Build a Governance Bot]]
+
+
+== Build Something Awesome Using Ethereum For Authentication ==
+
+https://gitcoin.co/issue/gitcoinco/skunkworks/246/100026395 
+
+https://github.com/austintgriffith/scaffold-eth/tree/sign-in-with-web3
+
+Connecting to a Matrix server would be interesting

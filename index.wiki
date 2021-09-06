@@ -44,6 +44,10 @@ Below is a list of projects I have worked on or am working on.
 * [[WTF is a DAO]]
 * [[Zero Knowledge]]
 
+== Hackathons ==
+
+* [[dgov 2021]]
+
 == KERNEL ==
 
 * [[Junto Interview - Value]]

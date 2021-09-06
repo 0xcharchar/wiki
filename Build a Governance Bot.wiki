@@ -1,0 +1,61 @@
+= Build a Governance Bot =
+
+* [[https://gitcoin.co/issue/boardroom-inc/dgov-hackathon/4/100026330|Bounty]]
+* [[https://github.com/0xcharchar/matrix-bot-boardroom|Repo]]
+* [[https://peertube.co.uk/videos/watch/e1e2783c-d2c2-4899-868d-32e0c84938b8|Demo video]]
+
+== What ==
+
+This bounty was sponsered by [[https://boardroom.info/|Boardroom]], a platform for governance participation, and required a developer to use the Boardroom read-only API to build a chat bot for a popular platform. So, I have chosen an unpopular platform in Matrix. gg.
+
+== The bot ==
+
+One of the most important things to add, in my opinion, was automatic updates in the room. The updates I implemented were for new proposals on a given protocol. The bot will:
+
+1. reach out to the `/protocols/<protocol-name>/proposals` endpoint
+2. filter the list to get only un-seen proposals
+3. print the new proposals into the room
+
+Users in the room are also able to request information about the latest proposals for any protocol, get details about a specific protocol, and check the voting history of any wallet or ENS address.
+
+== The technologies ==
+
+The following tools were used:
+
+* [[https://matrix.org/|Matrix]] - Matrix is a chat protocol that incorporates decentralization through federation and E2E encryption
+* [[https://github.com/matrix-org/synapse/|Matrix Synapse]] - The reference implementation of the Matrix server spec
+* [[https://docs.boardroom.info/boardroom-api/api-reference|Boardroom REST API]] - Get information about proposals, votes, voters, and all the supported protocols
+
+The bot is written in Javascript and runs on Nodejs 16+. It has a very simple routine, using the open source `matrix-bot-sdk`, to sync with a HomeServer on a regular basis. Commands all live in their own folders and use a special handler to load them. I followed a structure similar to Fastify plugins so that commands could very easily be added. A simple command would look like this:
+
+{{{class="javascript"
+const { RichReply } = require('matrix-bot-sdk')
+
+async function handler (params, context) {
+  const { roomId, event } = context
+  
+  const reply = RichReply.createFor(roomId, event, 'Hello to you', '<b>Hello</b> to you')
+  reply.msgtype = 'm.notice'
+  
+  return reply
+}
+
+module.exports = {
+  command: '!hello',
+  handler
+}
+}}}
+
+This structure gives the developer a lot of flexibility to create a reply but abstracts away the knowledge to send the reply and gives the centralized control over how to send. There is also an easy way to declare what the required command is.
+
+== Roadmap ==
+
+I think this bot could be quite useful in the future but still has a few rough edges. Below are a few things I am looking to solve before packaging this project up:
+
+* access control for commands
+* namespacing commands (probably by only listening for messages where the bot is tagged)
+* using `yargs` to parse commands, allowing for more complexity in the commands
+* create alert types that check for opening and closing of individual proposals
+* create clickable commands from bot responses
+* track more than one protocol
+* expand the single proposal view to show dates and votes
