@@ -1,0 +1,19 @@
+= Build Something Awesome Using Ethereum For Authentication =
+
+* [[https://gitcoin.co/issue/gitcoinco/skunkworks/246/100026395|Bounty]]
+* [[https://github.com/austintgriffith/scaffold-eth/tree/sign-in-with-web3|Forked from scaffold-eth]]
+* [[https://github.com/0xcharchar/web3-oidc-poc|Project repository]]
+
+Built a read-only Matrix chat client that used an OIDC flow to login. The IDP was custom built to use an Ethereum wallet as the authentication step.
+
+== The architecture ==
+
+{{local:./web3-oidc-poc.architecture.png}}
+
+== The flow ==
+
+{{local:./web3-oidc-poc-flow.png}}
+
+== Video demo ==
+
+[[https://peertube.co.uk/videos/watch/96f4b9be-e09f-45e9-9e4e-c50ca07a67ec|On PeerTube]]
