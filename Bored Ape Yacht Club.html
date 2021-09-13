@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+        
+    <title>Bored Ape Yacht Club</title>
+
+    <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+      ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    </style>
+      <link rel="stylesheet" href="style.css" />
+        </head>
+
+  <body>
+    
+    
+    
+    <main>
+      <h1 id="Bored Ape Yacht Club">Bored Ape Yacht Club</h1>
+      <ul>
+      <li>works as a key to a community</li>
+      <li>designs were predetermined by generating unique apes from ~170 traits over 7 categories</li>
+      <li>each design was assigned an ID and then uploaded to IPFS</li>
+      <li>minting process set the ownership</li>
+      </ul>
+      <pre class="solidity"><code>pragma solidity ^0.7.0;
+
+      /**
+       * @title BoredApeYachtClub contract
+       * @dev Extends ERC721 Non-Fungible Token Standard basic implementation
+       */
+      contract BoredApeYachtClub is ERC721, Ownable {
+          using SafeMath for uint256;
+
+          string public BAYC_PROVENANCE = &quot;&quot;;
+
+          uint256 public startingIndexBlock;
+
+          uint256 public startingIndex;
+
+          uint256 public constant apePrice = 80000000000000000; //0.08 ETH
+
+          uint public constant maxApePurchase = 20;
+
+          uint256 public MAX_APES;
+
+          bool public saleIsActive = false;
+
+          uint256 public REVEAL_TIMESTAMP;
+
+          constructor(string memory name, string memory symbol, uint256 maxNftSupply, uint256 saleStart) ERC721(name, symbol) {
+              MAX_APES = maxNftSupply;
+              REVEAL_TIMESTAMP = saleStart + (86400 * 9);
+          }
+
+          function withdraw() public onlyOwner {
+              uint balance = address(this).balance;
+              msg.sender.transfer(balance);
+          }
+
+          /**
+           * Set some Bored Apes aside
+           */
+          function reserveApes() public onlyOwner {        
+              uint supply = totalSupply();
+              uint i;
+              for (i = 0; i &lt; 30; i++) {
+                  _safeMint(msg.sender, supply + i);
+              }
+          }
+
+          /**
+           * DM Gargamel in Discord that you&#39;re standing right behind him.
+           */
+          function setRevealTimestamp(uint256 revealTimeStamp) public onlyOwner {
+              REVEAL_TIMESTAMP = revealTimeStamp;
+          } 
+
+          /*     
+          * Set provenance once it&#39;s calculated
+          */
+          function setProvenanceHash(string memory provenanceHash) public onlyOwner {
+              BAYC_PROVENANCE = provenanceHash;
+          }
+
+          function setBaseURI(string memory baseURI) public onlyOwner {
+              _setBaseURI(baseURI);
+          }
+
+          /*
+          * Pause sale if active, make active if paused
+          */
+          function flipSaleState() public onlyOwner {
+              saleIsActive = !saleIsActive;
+          }
+
+          /**
+          * Mints Bored Apes
+          */
+          function mintApe(uint numberOfTokens) public payable {
+              require(saleIsActive, &quot;Sale must be active to mint Ape&quot;);
+              require(numberOfTokens &lt;= maxApePurchase, &quot;Can only mint 20 tokens at a time&quot;);
+              require(totalSupply().add(numberOfTokens) &lt;= MAX_APES, &quot;Purchase would exceed max supply of Apes&quot;);
+              require(apePrice.mul(numberOfTokens) &lt;= msg.value, &quot;Ether value sent is not correct&quot;);
+              
+              for(uint i = 0; i &lt; numberOfTokens; i++) {
+                  uint mintIndex = totalSupply();
+                  if (totalSupply() &lt; MAX_APES) {
+                      _safeMint(msg.sender, mintIndex);
+                  }
+              }
+
+              // If we haven&#39;t set the starting index and this is either 1) the last saleable token or 2) the first token to be sold after
+              // the end of pre-sale, set the starting index block
+              if (startingIndexBlock == 0 &amp;&amp; (totalSupply() == MAX_APES || block.timestamp &gt;= REVEAL_TIMESTAMP)) {
+                  startingIndexBlock = block.number;
+              } 
+          }
+
+          /**
+           * Set the starting index for the collection
+           */
+          function setStartingIndex() public {
+              require(startingIndex == 0, &quot;Starting index is already set&quot;);
+              require(startingIndexBlock != 0, &quot;Starting index block must be set&quot;);
+              
+              startingIndex = uint(blockhash(startingIndexBlock)) % MAX_APES;
+              // Just a sanity case in the worst case if this function is called late (EVM only stores last 256 block hashes)
+              if (block.number.sub(startingIndexBlock) &gt; 255) {
+                  startingIndex = uint(blockhash(block.number - 1)) % MAX_APES;
+              }
+              // Prevent default sequence
+              if (startingIndex == 0) {
+                  startingIndex = startingIndex.add(1);
+              }
+          }
+
+          /**
+           * Set the starting index block for the collection, essentially unblocking
+           * setting starting index
+           */
+          function emergencySetStartingIndexBlock() public onlyOwner {
+              require(startingIndex == 0, &quot;Starting index is already set&quot;);
+              
+              startingIndexBlock = block.number;
+          }
+      }</code></pre>
+      <h2 id="Minting">Minting</h2>
+      <ul>
+      <li>no Counter so always calling back to <code>IERC721Enumerable.totalSupply()</code> for the current count</li>
+      <li><code>startingIndexBlock</code> seems to be used for provenance hash?</li>
+      <li>I can't figure out what is happening in the presale.</li>
+      </ul>
+      <pre class="solidity"><code>function mintApe(uint numberOfTokens) public payable {
+          require(saleIsActive, &quot;Sale must be active to mint Ape&quot;);
+          require(numberOfTokens &lt;= maxApePurchase, &quot;Can only mint 20 tokens at a time&quot;);
+          require(totalSupply().add(numberOfTokens) &lt;= MAX_APES, &quot;Purchase would exceed max supply of Apes&quot;);
+          require(apePrice.mul(numberOfTokens) &lt;= msg.value, &quot;Ether value sent is not correct&quot;);
+
+          // Doesn&#39;t use a counter so need to check the total from `ERC721` contract (implementing `IERC721Enumerable`)
+          for(uint i = 0; i &lt; numberOfTokens; i++) {
+              uint mintIndex = totalSupply();
+              if (totalSupply() &lt; MAX_APES) {
+                  _safeMint(msg.sender, mintIndex);
+              }
+          }
+
+          // If we haven&#39;t set the starting index and this is either 1) the last saleable token or 2) the first token to be sold after
+          // the end of pre-sale, set the starting index block
+          if (startingIndexBlock == 0 &amp;&amp; (totalSupply() == MAX_APES || block.timestamp &gt;= REVEAL_TIMESTAMP)) {
+              startingIndexBlock = block.number;
+          } 
+      }</code></pre>
+    </main>
+
+      </body>
+</html>

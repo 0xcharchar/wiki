@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+        
+    <title>Blackhole Bet</title>
+
+    <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+      ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    </style>
+      <link rel="stylesheet" href="style.css" />
+        </head>
+
+  <body>
+    
+    
+    
+    <main>
+      <h1 id="Blackhole Bet">Blackhole Bet</h1>
+      <p>I love that someone built this.</p>
+      <p><a href="https://etherscan.io/address/0xa0eebc70f892c18c6c9cbc9bb336968f62e43427">https://etherscan.io/address/0xa0eebc70f892c18c6c9cbc9bb336968f62e43427</a></p>
+      <pre class="solidity"><code>contract Blackhole {
+          
+          address public previousWinner;
+          address public feeTo;
+          address public currentLeader;
+          uint256 public currentBet;//amount of current bet in wei
+          uint256 public lastBet;//time of last bet in seconds
+          bool public currentGame;
+
+          event NewBet(uint256 amount, address newLeader);
+          event NewGameStarted(uint256 amount, address creator);
+          event Winrar(uint256 amount, address winner);
+          
+          constructor() {
+              previousWinner = msg.sender;
+              feeTo = msg.sender;
+          }
+
+          modifier onlyPreviousWinner() {
+              require(msg.sender == previousWinner, &quot;You aren&#39;t the previous winner&quot;);
+              _;
+          }
+
+          function setFeeTo(address destination) public onlyPreviousWinner {
+              feeTo = destination;
+          }
+
+          function nextMinimumBet() public view returns(uint256) {
+              if (currentGame) {
+                  return (currentBet / 10) + currentBet;
+              } else {
+                  return 100;
+              }
+          }
+
+          function bet() public payable {
+              require(msg.value &gt;= nextMinimumBet(), &quot;bet more&quot;);
+              if (!currentGame) {
+                  currentGame = true;
+                  emit NewGameStarted(msg.value, msg.sender);
+              } else {
+                  payable(feeTo).transfer(msg.value / 1000);
+              }
+              currentBet = msg.value;
+              lastBet = block.timestamp;
+              currentLeader = msg.sender;
+              emit NewBet(msg.value, msg.sender);
+          }
+
+          function win() public {
+              require(block.timestamp &gt;= lastBet + 2 days, &quot;must be leader for 48 hours to collect&quot;);
+              require(msg.sender == currentLeader);
+              emit Winrar(address(this).balance, msg.sender);
+              payable(msg.sender).transfer(address(this).balance);
+              currentGame = false;
+              currentBet = 0;
+              previousWinner = msg.sender;
+              feeTo = msg.sender;
+          }
+          
+
+      }</code></pre>
+      <h2 id="Betting">Betting</h2>
+      <pre class="solidity"><code>function bet() public payable {
+          require(msg.value &gt;= nextMinimumBet(), &quot;bet more&quot;);
+
+          // Will start a game on the first bet
+          if (!currentGame) {
+              currentGame = true;
+              emit NewGameStarted(msg.value, msg.sender);
+          } else {
+              payable(feeTo).transfer(msg.value / 1000);
+          }
+
+          // Doesn&#39;t check that a new bet is made after 48h have passed
+          
+          currentBet = msg.value;
+          lastBet = block.timestamp;
+          currentLeader = msg.sender;
+          
+          emit NewBet(msg.value, msg.sender);
+      }</code></pre>
+      <h2 id="Winning">Winning</h2>
+      <pre class="solidity"><code>function win() public {
+          // while the timestamp could be manipulated, the second require does access control :thumbsup:
+          require(block.timestamp &gt;= lastBet + 2 days, &quot;must be leader for 48 hours to collect&quot;);
+          require(msg.sender == currentLeader);
+
+          emit Winrar(address(this).balance, msg.sender);
+
+          payable(msg.sender).transfer(address(this).balance);
+
+          // would be more comfortable if currentLeader was reset here but its really not necessary
+          currentGame = false;
+          currentBet = 0;
+          previousWinner = msg.sender;
+          feeTo = msg.sender;
+      }</code></pre>
+    </main>
+
+      </body>
+</html>

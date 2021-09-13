@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+        
+    <title>Hitchhiker's Guide to the EVM</title>
+
+    <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+      ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    </style>
+      <link rel="stylesheet" href="style.css" />
+        </head>
+
+  <body>
+    
+    
+    
+    <main>
+      <h1 id="Hitchhiker&#39;s Guide to the EVM">Hitchhiker's Guide to the EVM</h1>
+      <p><a href="https://twitter.com/alexroan">@alexroan on Twitter</a></p>
+      <h2 id="Don&#39;t read storage variables too often">Don't read storage variables too often</h2>
+      <ul>
+      <li>better to create a <code>memory</code> variable and set its value to the storage variable</li>
+      <li>update the storage variable at the end, if needed</li>
+      </ul>
+      <h2 id="Pack your structs">Pack your structs</h2>
+      <ul>
+      <li>32 is the magic number</li>
+      <li>storage slots are 32 bytes each (<code>SSTORE</code>/<code>SLOAD</code>)</li>
+      <li>order of a struct matters:
+      <pre class="solidity"><code>    // inefficient storage, uses 3 slots
+          `address wallet   // SLOT 1 20/32`
+          `address backup   // SLOT 2 20/32`
+          `uint96 first     // SLOT 2 32/32`
+          `uint96 sec       // SLOT 3 12/32`
+          
+          // efficient storage, uses 2 slots
+          `address wallet   // SLOT 1 20/32`
+          `uint96 first     // SLOT 1 32/32`
+          `address backup   // SLOT 2 20/32`
+          `uint96 sec       // SLOT 2 32/32`</code></pre></li>
+      </ul>
+      <h2 id="Use constant or immutable">Use <code>constant</code> or <code>immutable</code></h2>
+      <ul>
+      <li>this has huge gas savings benefits</li>
+      <li>making <code>constructor</code> initialized variables immutable when there are no plans to update</li>
+      </ul>
+      <h2 id="Don&#39;t store unneccesary data">Don't store unneccesary data</h2>
+      <ul>
+      <li>try to use events instead</li>
+      </ul>
+      <h2 id="Make variables obvious">Make variables obvious</h2>
+      <ul>
+      <li>an example: Chainlink uses <code>s_</code> for storage variables</li>
+      </ul>
+    </main>
+
+      </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+        
+    <title>Build a Governance Bot</title>
+
+    <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+      ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    </style>
+      <link rel="stylesheet" href="style.css" />
+        </head>
+
+  <body>
+    
+    
+    
+    <main>
+      <h1 id="Build a Governance Bot">Build a Governance Bot</h1>
+      <ul>
+      <li><a href="https://gitcoin.co/issue/boardroom-inc/dgov-hackathon/4/100026330">Bounty</a></li>
+      <li><a href="https://github.com/0xcharchar/matrix-bot-boardroom">Repo</a></li>
+      <li><a href="https://peertube.co.uk/videos/watch/e1e2783c-d2c2-4899-868d-32e0c84938b8">Demo video</a></li>
+      </ul>
+      <h2 id="What">What</h2>
+      <p>This bounty was sponsered by <a href="https://boardroom.info/">Boardroom</a>, a platform for governance participation, and required a developer to use the Boardroom read-only API to build a chat bot for a popular platform. So, I have chosen an unpopular platform in Matrix. gg.</p>
+      <h2 id="The bot">The bot</h2>
+      <p>One of the most important things to add, in my opinion, was automatic updates in the room. The updates I implemented were for new proposals on a given protocol. The bot will:</p>
+      <ol>
+      <li>reach out to the <code>/protocols/&lt;protocol-name&gt;/proposals</code> endpoint</li>
+      <li>filter the list to get only un-seen proposals</li>
+      <li>print the new proposals into the room</li>
+      </ol>
+      <p>Users in the room are also able to request information about the latest proposals for any protocol, get details about a specific protocol, and check the voting history of any wallet or ENS address.</p>
+      <h2 id="The technologies">The technologies</h2>
+      <p>The following tools were used:</p>
+      <ul>
+      <li><a href="https://matrix.org/">Matrix</a> - Matrix is a chat protocol that incorporates decentralization through federation and E2E encryption</li>
+      <li><a href="https://github.com/matrix-org/synapse/">Matrix Synapse</a> - The reference implementation of the Matrix server spec</li>
+      <li><a href="https://docs.boardroom.info/boardroom-api/api-reference">Boardroom REST API</a> - Get information about proposals, votes, voters, and all the supported protocols</li>
+      </ul>
+      <p>The bot is written in Javascript and runs on Nodejs 16+. It has a very simple routine, using the open source <code>matrix-bot-sdk</code>, to sync with a HomeServer on a regular basis. Commands all live in their own folders and use a special handler to load them. I followed a structure similar to Fastify plugins so that commands could very easily be added. A simple command would look like this:</p>
+      <pre class="javascript"><code>const { RichReply } = require(&#39;matrix-bot-sdk&#39;)
+
+      async function handler (params, context) {
+        const { roomId, event } = context
+        
+        const reply = RichReply.createFor(roomId, event, &#39;Hello to you&#39;, &#39;&lt;b&gt;Hello&lt;/b&gt; to you&#39;)
+        reply.msgtype = &#39;m.notice&#39;
+        
+        return reply
+      }
+
+      module.exports = {
+        command: &#39;!hello&#39;,
+        handler
+      }</code></pre>
+      <p>This structure gives the developer a lot of flexibility to create a reply but abstracts away the knowledge to send the reply and gives the centralized control over how to send. There is also an easy way to declare what the required command is.</p>
+      <h2 id="Roadmap">Roadmap</h2>
+      <p>I think this bot could be quite useful in the future but still has a few rough edges. Below are a few things I am looking to solve before packaging this project up:</p>
+      <ul>
+      <li>access control for commands</li>
+      <li>namespacing commands (probably by only listening for messages where the bot is tagged)</li>
+      <li>using <code>yargs</code> to parse commands, allowing for more complexity in the commands</li>
+      <li>create alert types that check for opening and closing of individual proposals</li>
+      <li>create clickable commands from bot responses</li>
+      <li>track more than one protocol</li>
+      <li>expand the single proposal view to show dates and votes</li>
+      </ul>
+    </main>
+
+      </body>
+</html>

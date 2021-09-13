@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+        
+    <title>An Optimistic Build</title>
+
+    <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+      ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    </style>
+      <link rel="stylesheet" href="style.css" />
+        </head>
+
+  <body>
+    
+    
+    
+    <main>
+      <h1 id="An Optimistic Build">An Optimistic Build</h1>
+      <p><em>I missed the first half of this talk</em></p>
+      <p>About building/deploying on Optimism L2</p>
+      <p>By Justin J. Moses <a href="https://twitter.com/justinjmoses">@justinjmoses</a></p>
+      <h2 id="Contract Management Gotchas">Contract Management Gotchas</h2>
+      <ul>
+      <li>block size is 24kb</li>
+      <li>no selfDestruct</li>
+      <li>uses wETHA</li>
+      </ul>
+      <h2 id="Deployment">Deployment</h2>
+      <ul>
+      <li>no gas price or limit because the L1 is unknown</li>
+      </ul>
+      <h2 id="Testing">Testing</h2>
+      <ul>
+      <li>unit testing doesn't change (can still use hardhat for example)</li>
+      <li>integration:
+      <ul>
+      <li>L1 tests using geth</li>
+      <li>L2 using geth OVM</li>
+      <li>combined uses both nodes</li>
+      </ul></li>
+      </ul>
+      <h2 id="Ownership">Ownership</h2>
+      <ul>
+      <li>multisig can live on L1</li>
+      <li>messages relayed into L2</li>
+      <li>avoids multisig on L2 (helps move across L2 without moving the wallet around)</li>
+      </ul>
+    </main>
+
+      </body>
+</html>
