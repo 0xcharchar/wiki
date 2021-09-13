@@ -21,3 +21,8 @@
 * https://www.gbm.auction/
 * Vector DAO
 * Manifold Creator https://manifoldxyz.substack.com/p/manifold-creator
+* https://solidity-by-example.org/
+* Cryptopunks tutorial - https://github.com/cryptopunksnotdead/programming-cryptopunks
+* NFT Standards Working Group - https://github.com/NFT-Standards-WG/nft-metadata :
+  * also https://www.nftstandards.wtf/
+* https://twitter.com/wslyvh/status/1433787765624344583

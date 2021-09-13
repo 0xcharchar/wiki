@@ -5,7 +5,7 @@
 
 == PudgyPenguins.sol ==
 
-{{{class="solidity"
+{{{solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
@@ -126,7 +126,7 @@ contract PudgyPenguins is ERC721Enumerable, Ownable, ERC721Burnable, ERC721Pausa
 
 === minting ===
 
-{{{class="solidity"
+{{{solidity
 function mint(address _to, uint256 _count) public payable saleIsOpen {
     uint256 total = _totalSupply();
 
@@ -207,8 +207,8 @@ function withdrawAll() public payable onlyOwner {
 }
 
 function _widthdraw(address _address, uint256 _amount) private {
-    // I think `call` is used here to check that withdrawl was successful
-    // but `transfer` would revert on failure too so I dunno
+    // the `call` function is used so that funds can be withdrawn to a smart contract and avoid gas problems
+    // _I think_
     (bool success, ) = _address.call{value: _amount}("");
     require(success, "Transfer failed.");
 }

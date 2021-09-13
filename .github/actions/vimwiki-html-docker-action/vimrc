@@ -5,6 +5,7 @@ syntax on
 let g:vimwiki_list = [{
   \ 'path': '$GITHUB_WORKSPACE',
   \ 'path_html': '$GITHUB_WORKSPACE/public_html',
+  \ 'ext': '.wiki',
   \ 'template_path': '$GITHUB_WORKSPACE/templates',
   \ 'template_default': 'default',
   \ 'template_ext': '.html'

@@ -12,7 +12,7 @@ Built a read-only Matrix chat client that used an OIDC flow to login. The IDP wa
 
 == The flow ==
 
-{{local:images/web3-oidc-poc-flow.png}}
+{{local:images/web3-oidc-poc.flow.png}}
 
 == Video demo ==
 
