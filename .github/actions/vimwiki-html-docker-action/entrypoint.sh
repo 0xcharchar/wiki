@@ -1,5 +1,7 @@
 #!/bin/sh
 
+cd /github/workspace
+
 # create output folder
 mkdir -p public_html
 
