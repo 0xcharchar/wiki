@@ -1,0 +1,17 @@
+= BadgerDAO - Revamp Sett.Vision =
+
+Link: https://gitcoin.co/issue/Badger-Finance/gitcoin/11/100026092
+
+_This required approval, will not be participating_
+
+== Progress ==
+
+* cloned repo
+* started work on the {{Networth}} component
+* joined the discord, trying to figure out where to ask questions
+* created card views for the top of the page (Boost, networth, claims)
+
+== Questions ==
+
+* want this localized? is there a localization library already in use?
+* ROI is value / value earned? Is that all the number needed? What is the graph representing?
