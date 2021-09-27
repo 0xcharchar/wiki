@@ -38,6 +38,7 @@ Below is a list of projects I have worked on or am working on.
 * [[Vimwiki Github Action]]
 * [[WebAlert NFT]]
 * [[How I start a project]]
+* [[Anonymous]]
 
 == Decentralized ==
 
