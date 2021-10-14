@@ -1,0 +1,14 @@
+= GR11 Roadmap, maybe =
+
+== Self-hosted, decentralized future ==
+
+* finish the boardroom bot
+* create a matrix client with a wallet SSO
+* create contract/address interactions within client (using a bot?)
+* help improve matrix server deploy-ability
+  * probably using Synapse server but who knows
+* start building eth2/swarm/matrix combo sffpc/all-in-ones
+
+== Web2 service provider ==
+
+Servers to run odd jobs or APIs are still useful but paying for them requires a trusted person with a credit card. Why not build, on top of cloud infra, a PaaS that accepts crypto payments? Get the scaling power of AWS/GCP/Azure with less permission concerns. Make ownership available to DAO members, or select DAO members. Build integrations with Gnosis safe or Moloch treasuries

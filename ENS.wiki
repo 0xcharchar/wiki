@@ -1,0 +1,22 @@
+= ENS (Ethereum Name Service) =
+
+== Registrar ==
+
+Easy to set up subdomains by:
+
+1. Registering domain
+2. Creating a contract to do the registration (deploy an existing one like FIFSRegistrar for ease)
+3. Contract can be updated to limit registration with a price gate
+
+== Resolver ==
+
+This is the javascript to use to set the ContentHash:
+
+{{{js
+// using svelte & rollup
+import contentHash from '@ensdomains/content-hash/dist/index.js'
+
+const cidToHash = ipfsCid => `0x${contentHash.fromIpfs(ipfsCid)}`
+}}}
+
+Reference: https://github.com/ensdomains/ui/blob/fb0d502b438289dfb3e679a7e93c83311dcee2e9/src/utils/contents.js#L90-L93

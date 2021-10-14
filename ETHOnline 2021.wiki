@@ -1,0 +1,90 @@
+= ETHOnline 2021 =
+
+Pool prizes:
+
+* Pocket Network
+* Fluence
+* BitGo
+* Conjure
+* Livepeer
+* Chainlink
+* Protocol Labs (IPFS)
+* ParaSwap
+* Status.im
+* Covalent
+* ENS
+* NFTPort
+* Biconomy
+* UMA
+* Zora
+* DXDao
+* Umbrella Network
+* Yearn
+* Compound
+* Skynet
+* Sublime
+* Superfluid
+
+Presentation building:
+
+* tips from Aave https://docs.aave.com/hack/hackathon-expectations
+* short video
+* dev documentation
+* presentation
+
+Project ideas:
+
+* expand the tip jar contracts to include:
+  * composable features instead of separate contracts
+  * add a way to automatically move received tips into Compound or Balancer or Aave to get some of that sweet APR
+  * build a website to customize tip jar (with composable elements) and deploy it
+  * website has a way to login and show a dashboard for deployed tipjar
+* build an app to check for rugging potential on a contract, target NFTs as the MVP:
+  * input a contract address
+  * check to see if it is an NFT (uses IERC721 or has all the matching functions)
+  * based on a number of characteristics, to be determined, grade the contract on likelihood of getting fucked
+* 
+
+I have some pretty specific plans for the tip jars which I don't think I can complete before the end of the hackathon so, going to work on the "rug score" app.
+
+== Rug Score ==
+
+Name is a work in progress.
+
+TODO:
+
+* [ ] get a list of NFTs that have rugged users, compile reasons why they happened
+* [ ] build UI for site, aim for decentralization
+* [ ] cache analysis in orbit db or JSON on ipfs
+
+== LinkENS ==
+
+Patreon/Linktr.ee for the crypto crowd.
+
+Create a website based on ENS text records, login to deploy a wealth generation contract. Call it linkens.eth
+
+    Be rewarded for rewarding your favourite builders and creators.
+
+Features:
+
+* create a new profile
+* deploy a tipjar
+* update ENS records
+* walk user through various account setups
+* gasless transactions
+* tokenized reward distributor
+
+TODO:
+
+* [X] build a custom registrar
+* [ ] set custom resolver to handle website style (M A Y B E, a text record would work fine)
+* [ ] registrar should be the controller
+* [ ] only owner can request changes through registrar
+* [X] landing page base
+* [X] user page base
+* [X] wizard to create page:
+  * [X] register subdomain
+  * [X] create page from template
+  * [X] deploy page on to ipfs
+  * [X] update subdomain record
+  * [X] set owner to wallet
