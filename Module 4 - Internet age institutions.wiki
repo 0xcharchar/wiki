@@ -1,0 +1,56 @@
+= Module 4 - Internet age institutions =
+
+Institution as a practice or custom, the 'institution of marriage' is an
+example of this.
+
+The internet affects:
+
+* how we identify ourselves
+* how we reach consensus
+* how we experience time
+
+> The concept of the commons is not that of a resource; a commons comes from a totally different way of being in the world where it is not production which counts, but bodily, physical use according to rules that are established by custom, which never recognizes equality of all subjects because different people follow different customs. Their differences can be recognized in the way they share the commons.
+
+== Govern yourself ==
+
+>To give no trust
+>is to get no trust.
+>
+>When the work’s done right,
+>with no fuss or boasting,
+>ordinary people say,
+>Oh, we did it. 
+
+* a belief that building tools to govern oneself inevitably results in good
+  governance at higher levels
+* healthy communities require healthy individuals
+
+> Don't fight the system, just abandon it
+
+* Anarchy = sovereign individuals collaborating of their own volition on projects they choose to undertake
+* organization can be temporary because it is in response to a group need at a point in time
+
+>We reject: kings, presidents and voting.
+>We believe in: rough consensus and running code.
+
+* alegal systems = can't care about human context of information being processed
+* abandon violent legal enforcement for opelny verifiable math
+* we can join alegal institutions of our own volition
+
+> if we give everyone the ability to govern themselves, do we trust ourselves to be responsible?
+
+== Radically ==
+
+* model optimal collective decision making using maths
+* Liberal Radicalism = flexible and responsive funding system that avoids free-rider problems
+
+> sovereign tools which encourage collaboration without compulsion
+
+== Reading material ==
+
+* [[https://abahlali.org/files/Graeber.pdf|Fragments of an Anarchist Anthropology]]
+* [[https://vitalik.ca/general/2021/03/23/legitimacy.html|Legitimacy]]
+* [[https://interdependence.fm/episodes/radical-transparency-humor-disinformation-poetry-for-machines-avatar-politicians-and-giving-non-human-entities-a-vote-with-digital-minister-of-taiwan-audrey-tang-X36XnWVg|A Conservative Anarchist Digital Minister]]
+* [[https://gitcoin.co/blog/towards-computer-aided-governance-of-gitcoin-grants/|Gitcoin & Computer-Aided Governance]]
+* [[https://blog.makerdao.com/the-maker-foundation-returns-dev-fund-holdings-to-the-dao/|Progressive Decentralization]]
+* [[https://gitcoin.co/blog/experiments-with-liberal-radicalism/|Libral Radicalism]]
