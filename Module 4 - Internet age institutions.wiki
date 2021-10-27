@@ -1,5 +1,7 @@
 = Module 4 - Internet age institutions =
 
+Start point: https://kernel.community/en/learn/module-4
+
 Institution as a practice or custom, the 'institution of marriage' is an
 example of this.
 
@@ -46,6 +48,20 @@ The internet affects:
 
 > sovereign tools which encourage collaboration without compulsion
 
+> the mechanism provides much greater funding to many small contributions than to a few large ones
+
+> [Libreal Radicalism] seeks to achieve liberal ends in a fundamentally social world. In this sense it is also 'radical' in the original meaning: it gets to the roots of what liberalism is about, namely an anti-authoritarian commitment to neutrality across ways of living and valuing
+
+== Transform the internet ==
+
+> At its best, art transmits what cannot be said, or sung, or heard, or felt.
+
+* advacnements in technology lead to artistic advances
+
+== Consensus by asking ==
+
+
+
 == Reading material ==
 
 * [[https://abahlali.org/files/Graeber.pdf|Fragments of an Anarchist Anthropology]]
@@ -54,3 +70,5 @@ The internet affects:
 * [[https://gitcoin.co/blog/towards-computer-aided-governance-of-gitcoin-grants/|Gitcoin & Computer-Aided Governance]]
 * [[https://blog.makerdao.com/the-maker-foundation-returns-dev-fund-holdings-to-the-dao/|Progressive Decentralization]]
 * [[https://gitcoin.co/blog/experiments-with-liberal-radicalism/|Libral Radicalism]]
+* [[https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3243656|Public goods math]]
+* [[https://nakamoto.com/credible-neutrality/|Credible neutrality]]

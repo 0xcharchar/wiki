@@ -93,3 +93,5 @@ Stuff I am keeping an eye on but probably not working on directly
 == Scratchpad ==
 
 * overloaded functions in ethers are 'fun': https://docs.ethers.io/v5/single-page/#/v5/migration/web3/-%23-migration-from-web3-js--contracts--overloaded-functions
+  * related error:  multiple matching functions
+* Decentralized Identifiers https://www.w3.org/TR/did-core/
