@@ -21,7 +21,7 @@ these days...
 
 Take a look at this handy diagram
 
-<!-- image here -->
+{{local:./swear-jar-contract.png}}
 
 There are five players in this game:
 
@@ -45,7 +45,7 @@ Guess what, friendo, I've done the research. I have calculated the numbers. I
 have read the analytics. Let me break down the entire fool proof plan that will
 make you famous and broke for implementing a goddamned stupid idea.
 
-== T H E B O T =
+== The bot  ==
 
 Aunt Shirley bot (yes, you have to use this name) has one job:
 1. monitor potential swearers who probably have a Ethereum wallet
@@ -104,7 +104,7 @@ you use a separate oracle, you need a long poll on the event log from the swear
 jar. Once the event happens, Aunty can reply to the offensive and profane tweet
 and demand compensation.
 
-== T H E O R A C L E ==
+== The oracle ==
 
 This could be real simple or real hard. Either you use a fancy oracle or your
 shitty project has faith in Aunt Shirley's ability to post some data to a
@@ -117,7 +117,7 @@ Taking the simplest approach:
 
 Boom, done.
 
-== S W E A R J A R ==
+== The contract ==
 
 This is the best thing ever.
 
@@ -125,6 +125,8 @@ This is the best thing ever.
 2. Create a GENERATOR_ROLE (this will be your oracle) and a DEFAULT_ADMIN_ROLE (this will be you)
 3. You probably need the following functions:
     {{{solidity
+      event TokenPrepared (uint256 tokenId, address profanePerson);
+
       modifier isWhitelisted (address sender, unint256 tokenId) {
         require(tokenList[tokenId] != address(0));
         require(tokenList[tokenId] == sender);
@@ -135,4 +137,13 @@ This is the best thing ever.
       function mint (uint256 tokenId) external isWhitelisted(msg.sender, tokenId);
       // if you make mint payable, a withdrawl function might be nice
     }}}
-4. Or you could get a lazy-minting nft contract and make up for the deficencies with a minting dapp. Would be cheaper for you that way.
+
+Or you could get a lazy-minting nft contract and make up for the deficencies
+with a minting dapp. Would be cheaper for you that way. A lazy-minting contract
+would require a change in how the bot listens for token prep and contacts the
+swearer though.
+
+== Wrapping it up ==
+
+I doubt I'll ever get around to actually building this but if you, dearest
+fucking reader, do build this, I would love to see it.
