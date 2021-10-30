@@ -196,3 +196,21 @@ code {
   border: 1px solid #ccc;
   background-color: #f9f9f9;
 }
+
+footer {
+  margin: 3em auto 0 auto;
+  max-width: 80ch;
+  border-top: 3px solid #fdbdbd;
+  font-weight: 300;
+  font-style: italic;
+}
+
+footer p > a,
+footer a {
+  color: #1e90ff;
+  background: none;
+  text-decoration: underline;
+  font-size: initial;
+  padding: 0;
+  font-weight: 300;
+}
