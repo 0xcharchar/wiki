@@ -1,0 +1,25 @@
+= Frontend =
+
+== Responsive Design breakpoints ==
+
+Copying from https://tailwindcss.com/docs/responsive-design
+
+{{{javascript
+@media (min-width: 640px) { }
+@media (min-width: 768px) { }
+@media (min-width: 1024px) { }
+@media (min-width: 1280px) { }
+@media (min-width: 1536px) { }
+}}}
+
+Another important read: https://tailwindcss.com/docs/responsive-design#mobile-first
+
+Good ideology to follow:
+> What this means is that unprefixed utilities (like uppercase) take effect on all screen sizes, while prefixed utilities (like md:uppercase) only take effect at the specified breakpoint and above.
+
+== Limited length columns that autoflow to next column ==
+
+Sample jsbin: https://jsbin.com/lapafidejo/1/edit?html,css,output
+
+1. Single column in mobile
+2. Limit to three items per column at breakpoint, columns auto generated

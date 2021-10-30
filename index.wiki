@@ -58,7 +58,7 @@ Below is a list of projects I have worked on or am working on.
 
 == Dev ==
 
-* [[Setting up local reverse proxy with docker]]
+* [[Frontend]]
 
 == Watching ==
 

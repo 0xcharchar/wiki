@@ -20,3 +20,7 @@ const cidToHash = ipfsCid => `0x${contentHash.fromIpfs(ipfsCid)}`
 }}}
 
 Reference: https://github.com/ensdomains/ui/blob/fb0d502b438289dfb3e679a7e93c83311dcee2e9/src/utils/contents.js#L90-L93
+
+== NameWrapper ==
+
+== Preimage Namehash ==
