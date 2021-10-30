@@ -5,7 +5,7 @@
     <meta name="generator" content="pandoc" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
         
-    <title>Vimwiki Github Action</title>
+    <title>Frontend</title>
 
     <style>
       code{white-space: pre-wrap;}
@@ -87,46 +87,22 @@
     
     
     <main>
-      <h1 id="Vimwiki Github Action">Vimwiki Github Action</h1>
-      <p>So I've got a vimwiki. Now I want to make it a website. I have no interest in doing this manually.</p>
-      <h2 id="Vim setup">Vim setup</h2>
-      <p>There is a <code>:VimwikiAll2HTML</code> vim command. This requires:</p>
-      <ul>
-      <li>a template (done, added to <a href="/templates/default.html.html" title="wikilink">/templates/default.html</a></li>
-      <li>changes to <span id=".vimrc"></span><strong>.vimrc</strong>:
-      <pre class="vim"><code>        let g:vimwiki_list = [{
-                  \ &#39;path&#39;: &#39;/path/to/wiki&#39;,
-                  \ &#39;template_path&#39;: &#39;/path/to/wiki/templates&#39;,
-                  \ &#39;template_default&#39;: &#39;default&#39;,
-                  \ &#39;template_ext&#39;: &#39;.html&#39;}]</code></pre></li>
-      <li>it is possible to run the html command from the shell:
-      <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">vim</span> +VimwikiAll2HTML +quit index.wiki</span></code></pre></div></li>
-      <li>When the HTML is generated, it defaults to <span id="vimwiki_html/"></span><strong>vimwiki_html/</strong>. I assume this is because the default installation uses <span id="vimwiki/"></span><strong>vimwiki/</strong> as the wiki location.</li>
-      </ul>
-      <h2 id="Problems to solve">Problems to solve</h2>
-      <ul>
-      <li>The CSS is not grabbed from the templates directory, afaik. It is possible to pre-create the vimwiki_html folder and drop a CSS file in.</li>
-      <li>How the fuck to create a Github action:
-      <ul>
-      <li><a href="https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action">https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action</a></li>
-      </ul></li>
-      </ul>
-      <h2 id="Log">Log</h2>
-      <ul>
-      <li>have a simple image based on alpine that:
-      <ul>
-      <li>installs git and vim</li>
-      <li>creates a new user/group</li>
-      <li>switches to new user</li>
-      </ul></li>
-      <li>trying to clone vimwiki plugin is not working, getting: "could not create work tree dir"</li>
-      <li>fixed but only works on github at the moment (which is fine with me)</li>
-      </ul>
-      <h2 id="Links">Links</h2>
-      <ul>
-      <li><a href="https://www.rosipov.com/blog/custom-templates-in-vimwiki/">https://www.rosipov.com/blog/custom-templates-in-vimwiki/</a></li>
-      <li><a href="https://www.jorgee.net/blog/2015-11-04/">https://www.jorgee.net/blog/2015-11-04/</a></li>
-      </ul>
+      <h1 id="Frontend">Frontend</h1>
+      <h2 id="Responsive Design breakpoints">Responsive Design breakpoints</h2>
+      <p>Copying from <a href="https://tailwindcss.com/docs/responsive-design">https://tailwindcss.com/docs/responsive-design</a></p>
+      <div class="sourceCode" id="cb1"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>@<span class="fu">media</span> (min<span class="op">-</span>width<span class="op">:</span> <span class="dv">640</span><span class="er">px</span>) { }</span>
+      <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>@<span class="fu">media</span> (min<span class="op">-</span>width<span class="op">:</span> <span class="dv">768</span><span class="er">px</span>) { }</span>
+      <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>@<span class="fu">media</span> (min<span class="op">-</span>width<span class="op">:</span> <span class="dv">1024</span><span class="er">px</span>) { }</span>
+      <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>@<span class="fu">media</span> (min<span class="op">-</span>width<span class="op">:</span> <span class="dv">1280</span><span class="er">px</span>) { }</span>
+      <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>@<span class="fu">media</span> (min<span class="op">-</span>width<span class="op">:</span> <span class="dv">1536</span><span class="er">px</span>) { }</span></code></pre></div>
+      <p>Another important read: <a href="https://tailwindcss.com/docs/responsive-design#mobile-first">https://tailwindcss.com/docs/responsive-design#mobile-first</a></p>
+      <p>Good ideology to follow: &gt; What this means is that unprefixed utilities (like uppercase) take effect on all screen sizes, while prefixed utilities (like md:uppercase) only take effect at the specified breakpoint and above.</p>
+      <h2 id="Limited length columns that autoflow to next column">Limited length columns that autoflow to next column</h2>
+      <p>Sample jsbin: <a href="https://jsbin.com/lapafidejo/1/edit?html,css,output">https://jsbin.com/lapafidejo/1/edit?html,css,output</a></p>
+      <ol>
+      <li>Single column in mobile</li>
+      <li>Limit to three items per column at breakpoint, columns auto generated</li>
+      </ol>
     </main>
 
     <footer>
