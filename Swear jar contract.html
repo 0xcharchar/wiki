@@ -96,7 +96,7 @@
       <p>Let's go ahead and create a system whereby a user on Twitter swears, the user is confirmed to have an ENS domain and a wallet, and then a new token is made for minting by that user so that they can keep their swear words as a badge of honor. Or something. I'd say we should charge a fee but the fucking gas prices these days...</p>
       <h2 id="butt how">butt how</h2>
       <p>Take a look at this handy diagram</p>
-      <p>&lt;!-- image here --&gt;</p>
+      <p><img src="file:./swear-jar-contract.png" alt="" /></p>
       <p>There are five players in this game:</p>
       <ul>
       <li>The fucking user</li>
@@ -116,7 +116,7 @@
       <li>User fucking ignores because why in the fuck would they mint their own swear words. In this environment. With these fees.</li>
       </ul>
       <p>Guess what, friendo, I've done the research. I have calculated the numbers. I have read the analytics. Let me break down the entire fool proof plan that will make you famous and broke for implementing a goddamned stupid idea.</p>
-      <p>== T H E B O T =</p>
+      <p>== The bot ==</p>
       <p>Aunt Shirley bot (yes, you have to use this name) has one job:</p>
       <ol>
       <li>monitor potential swearers who probably have a Ethereum wallet</li>
@@ -153,7 +153,7 @@
       </ul>
       <p>This data can be used when contacting T H E O R A C L E.</p>
       <p>The final bit of work Aunt Shirley needs to do is listen for new tokens in the swear jar. Now, if Aunt Shirley is also the oracle, this will be easy. Just wait for the transaction to complete and grab the event out of the result. If you use a separate oracle, you need a long poll on the event log from the swear jar. Once the event happens, Aunty can reply to the offensive and profane tweet and demand compensation.</p>
-      <h2 id="T H E O R A C L E">T H E O R A C L E</h2>
+      <h2 id="The oracle">The oracle</h2>
       <p>This could be real simple or real hard. Either you use a fancy oracle or your shitty project has faith in Aunt Shirley's ability to post some data to a contract. Up to you.</p>
       <p>Taking the simplest approach:</p>
       <ul>
@@ -161,13 +161,15 @@
       <li>when Aunt Shirley has confirmed the data, it sends a message to your contract to prepare a new token</li>
       </ul>
       <p>Boom, done.</p>
-      <h2 id="S W E A R J A R">S W E A R J A R</h2>
+      <h2 id="The contract">The contract</h2>
       <p>This is the best thing ever.</p>
       <ol>
       <li>Import openzepplin ERC721 and AccessControl contracts</li>
       <li>Create a GENERATOR_ROLE (this will be your oracle) and a DEFAULT_ADMIN_ROLE (this will be you)</li>
       <li>You probably need the following functions:
-      <pre class="solidity"><code>      modifier isWhitelisted (address sender, unint256 tokenId) {
+      <pre class="solidity"><code>      event TokenPrepared (uint256 tokenId, address profanePerson);
+
+            modifier isWhitelisted (address sender, unint256 tokenId) {
               require(tokenList[tokenId] != address(0));
               require(tokenList[tokenId] == sender);
               _;
@@ -176,9 +178,16 @@
             function newToken (address allowed, bytes32 tweetUrl) external onlyRole(GENERATOR_ROLE) returns (uint256 tokenId);
             function mint (uint256 tokenId) external isWhitelisted(msg.sender, tokenId);
             // if you make mint payable, a withdrawl function might be nice</code></pre></li>
-      <li>Or you could get a lazy-minting nft contract and make up for the deficencies with a minting dapp. Would be cheaper for you that way.</li>
       </ol>
+      <p>Or you could get a lazy-minting nft contract and make up for the deficencies with a minting dapp. Would be cheaper for you that way. A lazy-minting contract would require a change in how the bot listens for token prep and contacts the swearer though.</p>
+      <h2 id="Wrapping it up">Wrapping it up</h2>
+      <p>I doubt I'll ever get around to actually building this but if you, dearest fucking reader, do build this, I would love to see it.</p>
     </main>
 
-      </body>
+    <footer>
+      <p>
+      Unless otherwise noted on the page, text is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and original code samples are under  <a href="https://choosealicense.com/licenses/unlicense/">Unlicense</a>.
+      </p>
+    </footer>
+  </body>
 </html>
