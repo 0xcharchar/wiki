@@ -38,7 +38,12 @@ ul {
 
 dt { font-weight: bold; }
 
-img { border: none; }
+img {
+  border: 5px solid #dcdcdc;
+  margin: 1em;
+  padding: 1em;
+  max-width: 100%;
+}
 
 pre {
   border: 5px solid #dcdcdc;
@@ -53,6 +58,20 @@ pre {
 pre.lambo {
   font-size: 7px;
   line-height: 7px;
+}
+
+pre > code.sourceCode {
+  border: none;
+  background: none;
+}
+
+.sourceCode,
+div.sourceCode {
+  overflow: unset !important;
+}
+
+pre.sourceCode {
+  overflow: scroll !important;
 }
 
 p > a {
