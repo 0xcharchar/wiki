@@ -56,11 +56,8 @@ Step one should be mostly easy:
 
 * with the dev account you already setup, you're going to use a [[https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/introduction|Filtered Stream]]
 * add a rule that looks like this
-{{{js
-{
-  "value": "-is:retweet bio_name:.eth",
-  "tag": "foul mouthed children"
-}
+{{{json
+{ "value": "-is:retweet bio_name:.eth", "tag": "foul mouthed children" }
 }}}
 
 Now you have a stream of tweets, presumably from people with an ENS domain.
