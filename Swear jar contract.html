@@ -132,7 +132,7 @@
       <p>Now you have a stream of tweets, presumably from people with an ENS domain.</p>
       <p>Step two is filtering the stream so start by getting the right fields:</p>
       <pre><code>https://api.twitter.com/2/tweets/search/stream?tweet.fields=id,text&amp;expansions=author_id&amp;user.fields=username</code></pre>
-      <p>With that stream, you can parse the <code>text</code> for swears using <code>isProfane</code> from <a href="https://github.com/web-mech/badwords">https://github.com/web-mech/badwords</a>. Then, take the <code>username</code> and parse out the potential ENS domain and confirm validity with ENS. Here are some examples:</p>
+      <p>With that stream, you can parse the <code>text</code> for swears using <code>isProfane</code> from the <a href="https://github.com/web-mech/badwords">badwords package</a>. Then, take the <code>username</code> and parse out the potential ENS domain and confirm validity with ENS. Here are some examples:</p>
       <div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> sampleUsernames <span class="op">=</span> [<span class="st">&#39;vitalik.eth&#39;</span><span class="op">,</span> <span class="st">&#39;⟠ toast.eth &#39;</span><span class="op">,</span> <span class="st">&#39;Farokh.eth&#39;</span><span class="op">,</span> <span class="st">&#39;ETHDenver&#39;</span><span class="op">,</span> <span class="st">&#39;Sriram Krishnan - sriramk.eth&#39;</span>]</span>
       <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
       <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> clean <span class="op">=</span> sampleUsernames</span>
@@ -164,17 +164,17 @@
       <li>Import openzepplin ERC721 and AccessControl contracts</li>
       <li>Create a GENERATOR_ROLE (this will be your oracle) and a DEFAULT_ADMIN_ROLE (this will be you)</li>
       <li>You probably need the following functions:
-      <pre class="solidity"><code>      event TokenPrepared (uint256 tokenId, address profanePerson);
+      <pre class="solidity"><code>event TokenPrepared (uint256 tokenId, address profanePerson);
 
-            modifier isWhitelisted (address sender, unint256 tokenId) {
-              require(tokenList[tokenId] != address(0));
-              require(tokenList[tokenId] == sender);
-              _;
-            }
+      modifier isWhitelisted (address sender, unint256 tokenId) {
+        require(tokenList[tokenId] != address(0));
+        require(tokenList[tokenId] == sender);
+        _;
+      }
 
-            function newToken (address allowed, bytes32 tweetUrl) external onlyRole(GENERATOR_ROLE) returns (uint256 tokenId);
-            function mint (uint256 tokenId) external isWhitelisted(msg.sender, tokenId);
-            // if you make mint payable, a withdrawl function might be nice</code></pre></li>
+      function newToken (address allowed, bytes32 tweetUrl) external onlyRole(GENERATOR_ROLE) returns (uint256 tokenId);
+      function mint (uint256 tokenId) external isWhitelisted(msg.sender, tokenId);
+      // if you make mint payable, a withdrawl function might be nice</code></pre></li>
       </ol>
       <p>Or you could get a lazy-minting nft contract and make up for the deficencies with a minting dapp. Would be cheaper for you that way. A lazy-minting contract would require a change in how the bot listens for token prep and contacts the swearer though.</p>
       <h2 id="Wrapping it up">Wrapping it up</h2>
