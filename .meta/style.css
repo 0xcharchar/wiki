@@ -227,3 +227,21 @@ footer a {
 }
 
 footer a:hover { color: #ff4500; }
+
+#banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#banner > nav > ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style-type: none;
+}
+
+#banner li > a {
+  display: block;
+  padding: 1em;
+}
