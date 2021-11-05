@@ -90,14 +90,6 @@ p > a:hover {
   background-color: #484848;
 }
 
-li > a {
-  color: #1e90ff;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-li > a:hover { color: #ff4500; }
-
 blockquote {
   color: #686868;
   font-size: 0.8em;
@@ -233,3 +225,5 @@ footer a {
   padding: 0;
   font-weight: 300;
 }
+
+footer a:hover { color: #ff4500; }
