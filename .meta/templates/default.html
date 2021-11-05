@@ -34,32 +34,14 @@
   </head>
 
   <body>
-    <section id="banner">
+    <header id="banner">
       <h1>charchar.eth wiki</h1>
       <nav>
         <ul>
-          <li><a href="/">Home</a></li>
+          <li><a href="/wiki">Home</a></li>
         </ul>
       </nav>
-    </section>
-
-    $if(title)$
-    <header id="title-block-header">
-      <h1 class="title">$title$</h1>
-      $if(date)$
-      <time dateTime="$date$" class="date">$date$</time>
-      $endif$
     </header>
-    $endif$
-
-    $if(toc)$
-    <nav id="$idprefix$TOC" role="doc-toc">
-      $if(toc-title)$
-      <h2 id="$idprefix$toc-title">$toc-title$</h2>
-      $endif$
-      $table-of-contents$
-    </nav>
-    $endif$
 
     <main>
       $body$
