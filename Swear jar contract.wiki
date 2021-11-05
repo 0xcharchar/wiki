@@ -68,8 +68,8 @@ Step two is filtering the stream so start by getting the right fields:
 https://api.twitter.com/2/tweets/search/stream?tweet.fields=id,text&expansions=author_id&user.fields=username
 }}}
 
-With that stream, you can parse the `text` for swears using `isProfane` from
-https://github.com/web-mech/badwords. Then, take the `username` and parse out
+With that stream, you can parse the `text` for swears using `isProfane` from the
+[[https://github.com/web-mech/badwords|badwords package]]. Then, take the `username` and parse out
 the potential ENS domain and confirm validity with ENS. Here are some examples:
 
 {{{js
@@ -122,17 +122,17 @@ This is the best thing ever.
 2. Create a GENERATOR_ROLE (this will be your oracle) and a DEFAULT_ADMIN_ROLE (this will be you)
 3. You probably need the following functions:
     {{{solidity
-      event TokenPrepared (uint256 tokenId, address profanePerson);
+event TokenPrepared (uint256 tokenId, address profanePerson);
 
-      modifier isWhitelisted (address sender, unint256 tokenId) {
-        require(tokenList[tokenId] != address(0));
-        require(tokenList[tokenId] == sender);
-        _;
-      }
+modifier isWhitelisted (address sender, unint256 tokenId) {
+  require(tokenList[tokenId] != address(0));
+  require(tokenList[tokenId] == sender);
+  _;
+}
 
-      function newToken (address allowed, bytes32 tweetUrl) external onlyRole(GENERATOR_ROLE) returns (uint256 tokenId);
-      function mint (uint256 tokenId) external isWhitelisted(msg.sender, tokenId);
-      // if you make mint payable, a withdrawl function might be nice
+function newToken (address allowed, bytes32 tweetUrl) external onlyRole(GENERATOR_ROLE) returns (uint256 tokenId);
+function mint (uint256 tokenId) external isWhitelisted(msg.sender, tokenId);
+// if you make mint payable, a withdrawl function might be nice
     }}}
 
 Or you could get a lazy-minting nft contract and make up for the deficencies

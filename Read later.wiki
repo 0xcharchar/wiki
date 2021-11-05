@@ -17,7 +17,6 @@
 * https://zpl.in/secure-sessions
 * https://www.youtube.com/watch?v=v1Z5BnBuFye
 * https://trello.com/b/qDaciNgF/moonshot-collective
-* https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/
 * https://www.gbm.auction/
 * Vector DAO
 * Manifold Creator https://manifoldxyz.substack.com/p/manifold-creator
@@ -26,3 +25,13 @@
 * NFT Standards Working Group - https://github.com/NFT-Standards-WG/nft-metadata :
   * also https://www.nftstandards.wtf/
 * https://twitter.com/wslyvh/status/1433787765624344583
+
+== DeFi ==
+
+* https://unmaskcrypto.com/
+
+== Frontend ==
+
+* https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/
+
+== NFT ==

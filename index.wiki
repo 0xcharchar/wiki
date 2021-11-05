@@ -59,6 +59,7 @@ Below is a list of projects I have worked on or am working on.
 == Dev ==
 
 * [[Frontend]]
+* [[Zero knowledge]]
 
 == Watching ==
 
@@ -96,6 +97,7 @@ Stuff I am keeping an eye on but probably not working on directly
 
 * [[Idea list]]
 * [[Read later]]
+* [[D_D links]]
 * [[Quests]]
 
 == Scratchpad ==
