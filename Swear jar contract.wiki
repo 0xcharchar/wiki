@@ -121,7 +121,7 @@ This is the best thing ever.
 1. Import openzepplin ERC721 and AccessControl contracts
 2. Create a GENERATOR_ROLE (this will be your oracle) and a DEFAULT_ADMIN_ROLE (this will be you)
 3. You probably need the following functions:
-    {{{solidity
+{{{solidity
 event TokenPrepared (uint256 tokenId, address profanePerson);
 
 modifier isWhitelisted (address sender, unint256 tokenId) {
@@ -133,7 +133,7 @@ modifier isWhitelisted (address sender, unint256 tokenId) {
 function newToken (address allowed, bytes32 tweetUrl) external onlyRole(GENERATOR_ROLE) returns (uint256 tokenId);
 function mint (uint256 tokenId) external isWhitelisted(msg.sender, tokenId);
 // if you make mint payable, a withdrawl function might be nice
-    }}}
+}}}
 
 Or you could get a lazy-minting nft contract and make up for the deficencies
 with a minting dapp. Would be cheaper for you that way. A lazy-minting contract

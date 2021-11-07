@@ -75,20 +75,22 @@ pre.sourceCode {
   overflow: scroll !important;
 }
 
-p > a {
-  color: white;
+a {
+  color: #5ac2ff;
   text-decoration: none;
   font-size: 0.7em;
-  padding: 3px 6px;
-  border-radius: 3px;
-  background-color: #1e90ff;
-  text-transform: uppercase;
-  font-weight: bold;
+  padding: 0.3em;
+  border: 1px solid transparent;
 }
 
-p > a:hover {
-  color: #dcdcdc;
-  background-color: #484848;
+a:hover {
+  border: 1px solid #48a0d4;
+  color: #48a0d4;
+}
+
+a:visited {
+  border: 1px solid #dadada;
+  color: #b4b5b5;
 }
 
 blockquote {
