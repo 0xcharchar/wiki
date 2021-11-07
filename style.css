@@ -78,7 +78,6 @@ pre.sourceCode {
 a {
   color: #5ac2ff;
   text-decoration: none;
-  font-size: 0.7em;
   padding: 0.3em;
   border: 1px solid transparent;
 }
@@ -236,6 +235,10 @@ footer a:hover { color: #ff4500; }
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2em;
+}
+
+#banner a {
+  border: none;
 }
 
 #banner > h1 {
