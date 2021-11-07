@@ -1,132 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="generator" content="pandoc" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-        
-    <title>Building Secure Smart Contracts</title>
+<head>
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 
-    <style>
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-      ul.task-list{list-style: none;}
-      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-    </style>
-      <link rel="stylesheet" href="/wiki/style.css" />
-        </head>
+<title>Building Secure Smart Contracts</title>
 
-  <body>
-    <header id="banner">
-      <h1>charchar.eth wiki</h1>
-      <nav>
-        <ul>
-          <li><a href="/wiki">Home</a></li>
-        </ul>
-      </nav>
-    </header>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+<link rel="stylesheet" href="/wiki/style.css" />
+</head>
 
-    <main>
-      <h1 id="Building Secure Smart Contracts">Building Secure Smart Contracts</h1>
-      <p>Speaker: Harry Papacharissiou <a href="https://twitter.com/pappas9999">@pappas9999 on Twitter</a></p>
-      <ul>
-      <li>two main sources of bugs:
-      <ul>
-      <li>infrastructure (protocols/evm)</li>
-      <li>smart contracts</li>
-      </ul></li>
-      <li>known vulnerabilities and exploits:
-      <ul>
-      <li>timestamp dependence and manipulation:
-      <ul>
-      <li>can be manipulated by a miner for a small window</li>
-      <li>solutions:
-      <ul>
-      <li>don't use timestamps</li>
-      <li>use <code>block.number</code> -&gt; estimate time</li>
-      </ul></li>
-      </ul></li>
-      <li>unexpected ether:
-      <ul>
-      <li>can't protect against other contracts using <code>selfDestruct()</code>, which is a unreversable function</li>
-      <li>if logic requires control of ether, it will likely break</li>
-      <li>solution:
-      <ul>
-      <li>don't use <code>this.balance</code></li>
-      <li>logic should be built to track ether independently of what contract has</li>
-      </ul></li>
-      </ul></li>
-      <li>Tx.Origin:
-      <ul>
-      <li>can be used by malicious contract to trigger functinos</li>
-      <li>solution:
-      <ul>
-      <li>don't use <code>tx.origin</code> for authorization</li>
-      </ul></li>
-      </ul></li>
-      <li>delegateCall:
-      <ul>
-      <li>this guy is too fast, check paritywallet hack</li>
-      <li>solution:
-      <ul>
-      <li>use library contracts</li>
-      </ul></li>
-      </ul></li>
-      <li>overflow/underflow attack:
-      <ul>
-      <li>wrapping integers can cause problems</li>
-      <li>Beauty Ecosystem Coin</li>
-      <li>solution:
-      <ul>
-      <li>use SafeMath</li>
-      <li>use solidity v0.8.0+</li>
-      </ul></li>
-      </ul></li>
-      <li>DoS attack:
-      <ul>
-      <li>make contract inoperable or trap ether</li>
-      <li>giving a user control over the execution of a contract via external call or data structures that have loops</li>
-      <li>solution:
-      <ul>
-      <li>use multi-sig contract</li>
-      <li>don't loop through uncontrolled structures</li>
-      <li>time locked resets</li>
-      </ul></li>
-      </ul></li>
-      <li>Race conditions / front running:
-      <ul>
-      <li>MEV</li>
-      <li>running a contract with higher gas usage</li>
-      <li>solutions:
-      <ul>
-      <li>modify upper bound on gas prices</li>
-      <li>use a commit-reveal scheme</li>
-      <li>chainlink FSS</li>
-      </ul></li>
-      </ul></li>
-      <li>re-entrancy attack:
-      <ul>
-      <li>sends ether to a contract</li>
-      <li>solution:
-      <ul>
-      <li>use <code>transfer</code> when sending to another contract</li>
-      <li>ensure all logic changes state first</li>
-      <li>use a mutex</li>
-      </ul></li>
-      <li>see The DAO hack</li>
-      </ul></li>
-      </ul></li>
-      </ul>
-      <p>I missed the last part of the talk :(</p>
-    </main>
+<body>
+<header id="banner">
+<h1>charchar.eth wiki</h1>
+<nav>
+<ul>
+<li><a href="/wiki">Home</a></li>
+</ul>
+</nav>
+</header>
 
-    <footer>
-      <p>
-      Unless otherwise noted on the page, text is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and original code samples are under  <a href="https://choosealicense.com/licenses/unlicense/">Unlicense</a>.
-      </p>
-    </footer>
-  </body>
+<main>
+<h1 id="Building Secure Smart Contracts">Building Secure Smart Contracts</h1>
+<p>Speaker: Harry Papacharissiou <a href="https://twitter.com/pappas9999">@pappas9999 on Twitter</a></p>
+<ul>
+<li>two main sources of bugs:
+<ul>
+<li>infrastructure (protocols/evm)</li>
+<li>smart contracts</li>
+</ul></li>
+<li>known vulnerabilities and exploits:
+<ul>
+<li>timestamp dependence and manipulation:
+<ul>
+<li>can be manipulated by a miner for a small window</li>
+<li>solutions:
+<ul>
+<li>don't use timestamps</li>
+<li>use <code>block.number</code> -&gt; estimate time</li>
+</ul></li>
+</ul></li>
+<li>unexpected ether:
+<ul>
+<li>can't protect against other contracts using <code>selfDestruct()</code>, which is a unreversable function</li>
+<li>if logic requires control of ether, it will likely break</li>
+<li>solution:
+<ul>
+<li>don't use <code>this.balance</code></li>
+<li>logic should be built to track ether independently of what contract has</li>
+</ul></li>
+</ul></li>
+<li>Tx.Origin:
+<ul>
+<li>can be used by malicious contract to trigger functinos</li>
+<li>solution:
+<ul>
+<li>don't use <code>tx.origin</code> for authorization</li>
+</ul></li>
+</ul></li>
+<li>delegateCall:
+<ul>
+<li>this guy is too fast, check paritywallet hack</li>
+<li>solution:
+<ul>
+<li>use library contracts</li>
+</ul></li>
+</ul></li>
+<li>overflow/underflow attack:
+<ul>
+<li>wrapping integers can cause problems</li>
+<li>Beauty Ecosystem Coin</li>
+<li>solution:
+<ul>
+<li>use SafeMath</li>
+<li>use solidity v0.8.0+</li>
+</ul></li>
+</ul></li>
+<li>DoS attack:
+<ul>
+<li>make contract inoperable or trap ether</li>
+<li>giving a user control over the execution of a contract via external call or data structures that have loops</li>
+<li>solution:
+<ul>
+<li>use multi-sig contract</li>
+<li>don't loop through uncontrolled structures</li>
+<li>time locked resets</li>
+</ul></li>
+</ul></li>
+<li>Race conditions / front running:
+<ul>
+<li>MEV</li>
+<li>running a contract with higher gas usage</li>
+<li>solutions:
+<ul>
+<li>modify upper bound on gas prices</li>
+<li>use a commit-reveal scheme</li>
+<li>chainlink FSS</li>
+</ul></li>
+</ul></li>
+<li>re-entrancy attack:
+<ul>
+<li>sends ether to a contract</li>
+<li>solution:
+<ul>
+<li>use <code>transfer</code> when sending to another contract</li>
+<li>ensure all logic changes state first</li>
+<li>use a mutex</li>
+</ul></li>
+<li>see The DAO hack</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>I missed the last part of the talk :(</p>
+</main>
+
+<footer>
+<p>
+Unless otherwise noted on the page, text is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and original code samples are under  <a href="https://choosealicense.com/licenses/unlicense/">Unlicense</a>.
+</p>
+</footer>
+</body>
 </html>

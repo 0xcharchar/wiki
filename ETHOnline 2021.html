@@ -1,132 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="generator" content="pandoc" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-        
-    <title>ETHOnline 2021</title>
+<head>
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 
-    <style>
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-      ul.task-list{list-style: none;}
-      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-    </style>
-      <link rel="stylesheet" href="/wiki/style.css" />
-        </head>
+<title>ETHOnline 2021</title>
 
-  <body>
-    <header id="banner">
-      <h1>charchar.eth wiki</h1>
-      <nav>
-        <ul>
-          <li><a href="/wiki">Home</a></li>
-        </ul>
-      </nav>
-    </header>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+<link rel="stylesheet" href="/wiki/style.css" />
+</head>
 
-    <main>
-      <h1 id="ETHOnline 2021">ETHOnline 2021</h1>
-      <p>Pool prizes:</p>
-      <ul>
-      <li>Pocket Network</li>
-      <li>Fluence</li>
-      <li>BitGo</li>
-      <li>Conjure</li>
-      <li>Livepeer</li>
-      <li>Chainlink</li>
-      <li>Protocol Labs (IPFS)</li>
-      <li>ParaSwap</li>
-      <li>Status.im</li>
-      <li>Covalent</li>
-      <li>ENS</li>
-      <li>NFTPort</li>
-      <li>Biconomy</li>
-      <li>UMA</li>
-      <li>Zora</li>
-      <li>DXDao</li>
-      <li>Umbrella Network</li>
-      <li>Yearn</li>
-      <li>Compound</li>
-      <li>Skynet</li>
-      <li>Sublime</li>
-      <li>Superfluid</li>
-      </ul>
-      <p>Presentation building:</p>
-      <ul>
-      <li>tips from Aave <a href="https://docs.aave.com/hack/hackathon-expectations">https://docs.aave.com/hack/hackathon-expectations</a></li>
-      <li>short video</li>
-      <li>dev documentation</li>
-      <li>presentation</li>
-      </ul>
-      <p>Project ideas:</p>
-      <ul>
-      <li>expand the tip jar contracts to include:
-      <ul>
-      <li>composable features instead of separate contracts</li>
-      <li>add a way to automatically move received tips into Compound or Balancer or Aave to get some of that sweet APR</li>
-      <li>build a website to customize tip jar (with composable elements) and deploy it</li>
-      <li>website has a way to login and show a dashboard for deployed tipjar</li>
-      </ul></li>
-      <li>build an app to check for rugging potential on a contract, target NFTs as the MVP:
-      <ul>
-      <li>input a contract address</li>
-      <li>check to see if it is an NFT (uses IERC721 or has all the matching functions)</li>
-      <li>based on a number of characteristics, to be determined, grade the contract on likelihood of getting fucked</li>
-      </ul></li>
-      <li></li>
-      </ul>
-      <p>I have some pretty specific plans for the tip jars which I don't think I can complete before the end of the hackathon so, going to work on the "rug score" app.</p>
-      <h2 id="Rug Score">Rug Score</h2>
-      <p>Name is a work in progress.</p>
-      <p><span class="todo">TODO:</span></p>
-      <ul>
-      <li><span class="done0"></span>get a list of NFTs that have rugged users, compile reasons why they happened</li>
-      <li><span class="done0"></span>build UI for site, aim for decentralization</li>
-      <li><span class="done0"></span>cache analysis in orbit db or JSON on ipfs</li>
-      </ul>
-      <h2 id="LinkENS">LinkENS</h2>
-      <p>Patreon/Linktr.ee for the crypto crowd.</p>
-      <p>Create a website based on ENS text records, login to deploy a wealth generation contract. Call it linkens.eth</p>
-      <blockquote>
-      Be rewarded for rewarding your favourite builders and creators.
-      </blockquote>
-      <p>Features:</p>
-      <ul>
-      <li>create a new profile</li>
-      <li>deploy a tipjar</li>
-      <li>update ENS records</li>
-      <li>walk user through various account setups</li>
-      <li>gasless transactions</li>
-      <li>tokenized reward distributor</li>
-      </ul>
-      <p><span class="todo">TODO:</span></p>
-      <ul>
-      <li><span class="done4"></span>build a custom registrar</li>
-      <li><span class="done0"></span>set custom resolver to handle website style (M A Y B E, a text record would work fine)</li>
-      <li><span class="done0"></span>registrar should be the controller</li>
-      <li><span class="done0"></span>only owner can request changes through registrar</li>
-      <li><span class="done4"></span>landing page base</li>
-      <li><span class="done4"></span>user page base</li>
-      <li><span class="done4"></span>wizard to create page:
-      <ul>
-      <li><span class="done4"></span>register subdomain</li>
-      <li><span class="done4"></span>create page from template</li>
-      <li><span class="done4"></span>deploy page on to ipfs</li>
-      <li><span class="done4"></span>update subdomain record</li>
-      <li><span class="done4"></span>set owner to wallet</li>
-      </ul></li>
-      </ul>
-    </main>
+<body>
+<header id="banner">
+<h1>charchar.eth wiki</h1>
+<nav>
+<ul>
+<li><a href="/wiki">Home</a></li>
+</ul>
+</nav>
+</header>
 
-    <footer>
-      <p>
-      Unless otherwise noted on the page, text is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and original code samples are under  <a href="https://choosealicense.com/licenses/unlicense/">Unlicense</a>.
-      </p>
-    </footer>
-  </body>
+<main>
+<h1 id="ETHOnline 2021">ETHOnline 2021</h1>
+<p>Pool prizes:</p>
+<ul>
+<li>Pocket Network</li>
+<li>Fluence</li>
+<li>BitGo</li>
+<li>Conjure</li>
+<li>Livepeer</li>
+<li>Chainlink</li>
+<li>Protocol Labs (IPFS)</li>
+<li>ParaSwap</li>
+<li>Status.im</li>
+<li>Covalent</li>
+<li>ENS</li>
+<li>NFTPort</li>
+<li>Biconomy</li>
+<li>UMA</li>
+<li>Zora</li>
+<li>DXDao</li>
+<li>Umbrella Network</li>
+<li>Yearn</li>
+<li>Compound</li>
+<li>Skynet</li>
+<li>Sublime</li>
+<li>Superfluid</li>
+</ul>
+<p>Presentation building:</p>
+<ul>
+<li>tips from Aave <a href="https://docs.aave.com/hack/hackathon-expectations">https://docs.aave.com/hack/hackathon-expectations</a></li>
+<li>short video</li>
+<li>dev documentation</li>
+<li>presentation</li>
+</ul>
+<p>Project ideas:</p>
+<ul>
+<li>expand the tip jar contracts to include:
+<ul>
+<li>composable features instead of separate contracts</li>
+<li>add a way to automatically move received tips into Compound or Balancer or Aave to get some of that sweet APR</li>
+<li>build a website to customize tip jar (with composable elements) and deploy it</li>
+<li>website has a way to login and show a dashboard for deployed tipjar</li>
+</ul></li>
+<li>build an app to check for rugging potential on a contract, target NFTs as the MVP:
+<ul>
+<li>input a contract address</li>
+<li>check to see if it is an NFT (uses IERC721 or has all the matching functions)</li>
+<li>based on a number of characteristics, to be determined, grade the contract on likelihood of getting fucked</li>
+</ul></li>
+<li></li>
+</ul>
+<p>I have some pretty specific plans for the tip jars which I don't think I can complete before the end of the hackathon so, going to work on the "rug score" app.</p>
+<h2 id="Rug Score">Rug Score</h2>
+<p>Name is a work in progress.</p>
+<p><span class="todo">TODO:</span></p>
+<ul>
+<li><span class="done0"></span>get a list of NFTs that have rugged users, compile reasons why they happened</li>
+<li><span class="done0"></span>build UI for site, aim for decentralization</li>
+<li><span class="done0"></span>cache analysis in orbit db or JSON on ipfs</li>
+</ul>
+<h2 id="LinkENS">LinkENS</h2>
+<p>Patreon/Linktr.ee for the crypto crowd.</p>
+<p>Create a website based on ENS text records, login to deploy a wealth generation contract. Call it linkens.eth</p>
+<blockquote>
+Be rewarded for rewarding your favourite builders and creators.
+</blockquote>
+<p>Features:</p>
+<ul>
+<li>create a new profile</li>
+<li>deploy a tipjar</li>
+<li>update ENS records</li>
+<li>walk user through various account setups</li>
+<li>gasless transactions</li>
+<li>tokenized reward distributor</li>
+</ul>
+<p><span class="todo">TODO:</span></p>
+<ul>
+<li><span class="done4"></span>build a custom registrar</li>
+<li><span class="done0"></span>set custom resolver to handle website style (M A Y B E, a text record would work fine)</li>
+<li><span class="done0"></span>registrar should be the controller</li>
+<li><span class="done0"></span>only owner can request changes through registrar</li>
+<li><span class="done4"></span>landing page base</li>
+<li><span class="done4"></span>user page base</li>
+<li><span class="done4"></span>wizard to create page:
+<ul>
+<li><span class="done4"></span>register subdomain</li>
+<li><span class="done4"></span>create page from template</li>
+<li><span class="done4"></span>deploy page on to ipfs</li>
+<li><span class="done4"></span>update subdomain record</li>
+<li><span class="done4"></span>set owner to wallet</li>
+</ul></li>
+</ul>
+</main>
+
+<footer>
+<p>
+Unless otherwise noted on the page, text is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and original code samples are under  <a href="https://choosealicense.com/licenses/unlicense/">Unlicense</a>.
+</p>
+</footer>
+</body>
 </html>

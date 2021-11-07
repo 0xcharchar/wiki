@@ -1,96 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="generator" content="pandoc" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-        
-    <title>Eggrypto</title>
+<head>
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 
-    <style>
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-      ul.task-list{list-style: none;}
-      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-    </style>
-      <link rel="stylesheet" href="/wiki/style.css" />
-        </head>
+<title>Eggrypto</title>
 
-  <body>
-    <header id="banner">
-      <h1>charchar.eth wiki</h1>
-      <nav>
-        <ul>
-          <li><a href="/wiki">Home</a></li>
-        </ul>
-      </nav>
-    </header>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+<link rel="stylesheet" href="/wiki/style.css" />
+</head>
 
-    <main>
-      <h1 id="Eggrypto">Eggrypto</h1>
-      <p>The team uses an upgradeable contract and a proxy: <a href="https://etherscan.io/address/0x42b4a7db1ed930198bc37971b33e86f19ce88600">Etherscan</a> or <a href="https://polygonscan.com/address/0x42b4a7db1ed930198bc37971b33e86f19ce88600">Polygonscan</a>.</p>
-      <p>The ERC721 contract currently being called is: <a href="https://etherscan.io/address/0xd699c87e346a8d62caf0e07fe9a31fdeeb47dea5">https://etherscan.io/address/0xd699c87e346a8d62caf0e07fe9a31fdeeb47dea5</a></p>
-      <p>Contract is the most layered ERC721 that I have seen to date. Deployed contract is really short, the minting function is actually inherited.</p>
-      <p>Purely setup code in this contract.</p>
-      <pre class="solidity"><code>contract StandaloneERC721
-          is Initializable, ERC721, ERC721Enumerable, ERC721Metadata, ERC721MetadataMintable, ERC721Pausable
-      {
-          function initialize(string memory name, string memory symbol, address[] memory minters, address[] memory pausers) public initializer {
-              ERC721.initialize();
-              ERC721Enumerable.initialize();
-              ERC721Metadata.initialize(name, symbol);
+<body>
+<header id="banner">
+<h1>charchar.eth wiki</h1>
+<nav>
+<ul>
+<li><a href="/wiki">Home</a></li>
+</ul>
+</nav>
+</header>
 
-              // Initialize the minter and pauser roles, and renounce them
-              ERC721MetadataMintable.initialize(address(this));
-              _removeMinter(address(this));
+<main>
+<h1 id="Eggrypto">Eggrypto</h1>
+<p>The team uses an upgradeable contract and a proxy: <a href="https://etherscan.io/address/0x42b4a7db1ed930198bc37971b33e86f19ce88600">Etherscan</a> or <a href="https://polygonscan.com/address/0x42b4a7db1ed930198bc37971b33e86f19ce88600">Polygonscan</a>.</p>
+<p>The ERC721 contract currently being called is: <a href="https://etherscan.io/address/0xd699c87e346a8d62caf0e07fe9a31fdeeb47dea5">https://etherscan.io/address/0xd699c87e346a8d62caf0e07fe9a31fdeeb47dea5</a></p>
+<p>Contract is the most layered ERC721 that I have seen to date. Deployed contract is really short, the minting function is actually inherited.</p>
+<p>Purely setup code in this contract.</p>
+<pre class="solidity"><code>contract StandaloneERC721
+is Initializable, ERC721, ERC721Enumerable, ERC721Metadata, ERC721MetadataMintable, ERC721Pausable
+{
+function initialize(string memory name, string memory symbol, address[] memory minters, address[] memory pausers) public initializer {
+ERC721.initialize();
+ERC721Enumerable.initialize();
+ERC721Metadata.initialize(name, symbol);
 
-              ERC721Pausable.initialize(address(this));
-              _removePauser(address(this));
+// Initialize the minter and pauser roles, and renounce them
+ERC721MetadataMintable.initialize(address(this));
+_removeMinter(address(this));
 
-              // Add the requested minters and pausers (this can be done after renouncing since
-              // these are the internal calls)
-              for (uint256 i = 0; i &lt; minters.length; ++i) {
-                  _addMinter(minters[i]);
-              }
+ERC721Pausable.initialize(address(this));
+_removePauser(address(this));
 
-              for (uint256 i = 0; i &lt; pausers.length; ++i) {
-                  _addPauser(pausers[i]);
-              }
-          }
-      }</code></pre>
-      <p>Contract that does the minting (seems to be an OpenZepplin contract):</p>
-      <pre class="solidity"><code>contract ERC721MetadataMintable is Initializable, ERC721, ERC721Metadata, MinterRole {
-          function initialize(address sender) public initializer {
-              require(ERC721._hasBeenInitialized());
-              require(ERC721Metadata._hasBeenInitialized());
-              MinterRole.initialize(sender);
-          }
+// Add the requested minters and pausers (this can be done after renouncing since
+// these are the internal calls)
+for (uint256 i = 0; i &lt; minters.length; ++i) {
+_addMinter(minters[i]);
+}
 
-          /**
-           * @dev Function to mint tokens.
-           * @param to The address that will receive the minted tokens.
-           * @param tokenId The token id to mint.
-           * @param tokenURI The token URI of the minted token.
-           * @return A boolean that indicates if the operation was successful.
-           */
-          function mintWithTokenURI(address to, uint256 tokenId, string memory tokenURI) public onlyMinter returns (bool) {
-              _mint(to, tokenId);
-              _setTokenURI(tokenId, tokenURI);
-              return true;
-          }
+for (uint256 i = 0; i &lt; pausers.length; ++i) {
+_addPauser(pausers[i]);
+}
+}
+}</code></pre>
+<p>Contract that does the minting (seems to be an OpenZepplin contract):</p>
+<pre class="solidity"><code>contract ERC721MetadataMintable is Initializable, ERC721, ERC721Metadata, MinterRole {
+function initialize(address sender) public initializer {
+require(ERC721._hasBeenInitialized());
+require(ERC721Metadata._hasBeenInitialized());
+MinterRole.initialize(sender);
+}
 
-          uint256[50] private ______gap;
-      }</code></pre>
-      <p>The <code>______gap</code> enables library upgrades without breaking user contracts. See <a href="https://forum.openzeppelin.com/t/what-exactly-is-the-reason-for-uint256-50-private-gap/798">this forum post</a></p>
-    </main>
+/**
+* @dev Function to mint tokens.
+* @param to The address that will receive the minted tokens.
+* @param tokenId The token id to mint.
+* @param tokenURI The token URI of the minted token.
+* @return A boolean that indicates if the operation was successful.
+*/
+function mintWithTokenURI(address to, uint256 tokenId, string memory tokenURI) public onlyMinter returns (bool) {
+_mint(to, tokenId);
+_setTokenURI(tokenId, tokenURI);
+return true;
+}
 
-    <footer>
-      <p>
-      Unless otherwise noted on the page, text is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and original code samples are under  <a href="https://choosealicense.com/licenses/unlicense/">Unlicense</a>.
-      </p>
-    </footer>
-  </body>
+uint256[50] private ______gap;
+}</code></pre>
+<p>The <code>______gap</code> enables library upgrades without breaking user contracts. See <a href="https://forum.openzeppelin.com/t/what-exactly-is-the-reason-for-uint256-50-private-gap/798">this forum post</a></p>
+</main>
+
+<footer>
+<p>
+Unless otherwise noted on the page, text is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and original code samples are under  <a href="https://choosealicense.com/licenses/unlicense/">Unlicense</a>.
+</p>
+</footer>
+</body>
 </html>
