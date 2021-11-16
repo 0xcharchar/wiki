@@ -1,15 +1,16 @@
 = LinkENS =
 
-== Design todo ==
+== UI ==
 
 * [ ] gradient hover state needs to shift right, not left. Left side should be just the darker blue
 * [ ] hover state for text links in menu
-* [ ] dark/light theme toggle
+* [X] dark/light theme toggle
 * [ ] dark theme
 * [ ] add in logo
 * [ ] fix colours for text and links
 * [ ] the bloody button outlines
 * [ ] button shadows
+* [ ] mobile style
 
 == Features ==
 
