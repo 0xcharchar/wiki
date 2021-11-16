@@ -88,3 +88,5 @@ TODO:
   * [X] deploy page on to ipfs
   * [X] update subdomain record
   * [X] set owner to wallet
+
+Separate page for continuing work: [[LinkENS]]
