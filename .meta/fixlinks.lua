@@ -1,5 +1,5 @@
 function Link(el)
-  if el.title == 'wikilink' and string.sub(el.href, 1, 1) != '#' then
+  if el.title == 'wikilink' and el.target:sub(1, 1) ~= '#' then
     el.target = el.target .. ".html"
   end
   return el
