@@ -72,7 +72,7 @@ ul.task-list{list-style: none;}
 <li><span class="done0"></span>final button should just say publish but trigger connect wallet if not connected</li>
 </ul>
 <h2 id="L2 notes">L2 notes</h2>
-<p>L2 subdomains are pretty straightforward but the biggest gap is a lack of support from clients. We would want to have support in Metamask, mobile wallets, and Cloudflare's CDN thing before going down this path. We <em>could</em> do L1 subdomains with L2 record resolvers. This would require the user to do two transactions from their wallet, one on L1 and one on L2. We could skip the L2 transaction by covering the gas cost (should be significantly lower anyways).</p>
+<p>L2 subdomains are pretty straightforward but the biggest gap is a lack of support from clients. We would want to have support in Metamask, mobile wallets, and Cloudflare's CDN thing before going down this path. We <em>could</em> do L1 subdomains with L2 record resolvers. This would require two transactions: one on L1 and one on L2. We could have the user pay the gas fees plus a small fee to register an L1 subdomain then use the profits to update the rest of the records on L2. To avoid getting cleaned out, we would only do the initial record setting. Any changes would be on the user to perform from their wallet.</p>
 </main>
 
 <footer>
