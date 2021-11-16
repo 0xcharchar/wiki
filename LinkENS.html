@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+<title>LinkENS</title>
+
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+<link rel="stylesheet" href="/wiki/style.css" />
+</head>
+
+<body>
+<header id="banner">
+<h1><a href="/wiki">charchar.eth wiki</a></h1>
+<nav>
+<ul>
+<li><a href="/wiki">Home</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<h1 id="LinkENS">LinkENS</h1>
+<h2 id="Design todo">Design todo</h2>
+<ul>
+<li><span class="done0"></span>gradient hover state needs to shift right, not left. Left side should be just the darker blue</li>
+<li><span class="done0"></span>hover state for text links in menu</li>
+<li><span class="done0"></span>dark/light theme toggle</li>
+<li><span class="done0"></span>dark theme</li>
+<li><span class="done0"></span>add in logo</li>
+<li><span class="done0"></span>fix colours for text and links</li>
+<li><span class="done0"></span>the bloody button outlines</li>
+<li><span class="done0"></span>button shadows</li>
+</ul>
+<h2 id="Features">Features</h2>
+<ul>
+<li><span class="done4"></span>connect wallet</li>
+<li>[-] L2 subdomains and resolvers:
+<ul>
+<li><a href="https://discord.com/channels/742384562646286509/888239500130672640/903162058110042132">https://discord.com/channels/742384562646286509/888239500130672640/903162058110042132</a></li>
+<li><a href="https://github.com/ethereum/EIPs/pull/4346">https://github.com/ethereum/EIPs/pull/4346</a></li>
+<li>see <a href="#L2 notes.html" title="wikilink">#L2 notes</a></li>
+</ul></li>
+<li><span class="done0"></span>user page in svelte but deployed as single file from serverless function</li>
+<li><span class="done0"></span>form validations</li>
+<li><span class="done0"></span>serverless function accept profile data</li>
+<li><span class="done0"></span>user page preview</li>
+<li><span class="done0"></span>marketing/landing page</li>
+<li><span class="done0"></span>deploy latest SiteManager contract</li>
+</ul>
+<h2 id="Admin">Admin</h2>
+<ul>
+<li><span class="done0"></span>move email hosting somewhere else (current host only allows one user and I'm trying not to dox myself)</li>
+</ul>
+<h2 id="Bugs">Bugs</h2>
+<ul>
+<li><span class="done0"></span>if the domain search triggers while backspacing and the user completely empties the input box, validation status of the intermediate search still exists</li>
+<li><span class="done0"></span>if selecting a wallet and metamask is not connected, the profile icon still shows but is empty, button never returns</li>
+<li><span class="done0"></span>validation icon does not always match the provided value, can happen when typing too slow</li>
+<li><span class="done0"></span>on confirmation screen, the avatar has a higher index then the connect wallet modal</li>
+<li><span class="done0"></span>final button should just say publish but trigger connect wallet if not connected</li>
+</ul>
+<h2 id="L2 Notes">L2 Notes</h2>
+<p>L2 subdomains are pretty straightforward but the biggest gap is a lack of support from clients. We would want to have support in Metamask, mobile wallets, and Cloudflare's CDN thing before going down this path. We <em>could</em> do L1 subdomains with L2 record resolvers. This would require the user to do two transactions from their wallet, one on L1 and one on L2. We could skip the L2 transaction by covering the gas cost (should be significantly lower anyways).</p>
+</main>
+
+<footer>
+<p>
+Unless otherwise noted on the page, text is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and original code samples are under  <a href="https://choosealicense.com/licenses/unlicense/">Unlicense</a>.
+</p>
+</footer>
+</body>
+</html>
