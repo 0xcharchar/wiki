@@ -24,20 +24,20 @@
 * [ ] serverless function accept profile data
 * [ ] user page preview
 * [ ] marketing/landing page
-* [ ] deploy latest SiteManager contract
 
 == Admin ==
 
 * [ ] move email hosting somewhere else (current host only allows one user and I'm trying not to dox myself)
+* [ ] deploy latest SiteManager contract
 
 == Bugs ==
 
 * [ ] if the domain search triggers while backspacing and the user completely empties the input box, validation status of the intermediate search still exists
-* [ ] if selecting a wallet and metamask is not connected, the profile icon still shows but is empty, button never returns
+* [X] if selecting a wallet and metamask is not connected, the profile icon still shows but is empty, button never returns
 * [ ] validation icon does not always match the provided value, can happen when typing too slow
 * [ ] on confirmation screen, the avatar has a higher index then the connect wallet modal
 * [ ] final button should just say publish but trigger connect wallet if not connected
 
-== L2 Notes ==
+== L2 notes ==
 
 L2 subdomains are pretty straightforward but the biggest gap is a lack of support from clients. We would want to have support in Metamask, mobile wallets, and Cloudflare's CDN thing before going down this path. We _could_ do L1 subdomains with L2 record resolvers. This would require the user to do two transactions from their wallet, one on L1 and one on L2. We could skip the L2 transaction by covering the gas cost (should be significantly lower anyways).
