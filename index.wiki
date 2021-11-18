@@ -96,3 +96,6 @@ Stuff I am keeping an eye on but probably not working on directly
 * https://discourse.sourcecred.io/t/a-better-onboarding/767
 * https://cryptopunksnotdead.github.io/
 * https://wiki.lobby.so/
+* https://www.lua.org/cgi-bin/demo
+* https://l2fees.info/
+* https://gitcoin.co/blog/announcing-grants-round-12/
