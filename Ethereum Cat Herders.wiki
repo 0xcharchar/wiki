@@ -1,0 +1,8 @@
+= Ethereum Cat Herders (ECH) =
+
+:ech:
+
+== EIP Editor apprenticeship meeting ==
+
+[[https://www.youtube.com/watch?v=pgwqySjLwIs|Video]]
+

@@ -23,8 +23,9 @@ Below is a list of projects I have worked on or am working on.
 == Decentralized ==
 
 * [[WTF is a DAO]]
-* [[Zero Knowledge]]
+* [[Zero knowledge]]
 * [[gr11 roadmap maybe]]
+* [[Ethereum Cat Herders]]
 
 == Hackathons ==
 
