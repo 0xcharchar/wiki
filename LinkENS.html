@@ -31,6 +31,15 @@ ul.task-list{list-style: none;}
 
 <main>
 <h1 id="LinkENS">LinkENS</h1>
+<h2 id="Running Expenses">Running Expenses</h2>
+<ul>
+<li>Netlify Functions: 125k requests and 100h per month, free</li>
+<li>Fleek: 250min build and 50GB bandwidth, free</li>
+<li>Storage: 1TB for 1yr, free</li>
+<li>ENS: $5USD + gas per year</li>
+<li>DNS: $8.35USD 2 years</li>
+<li>Email: $10.10 USD 1 year</li>
+</ul>
 <h2 id="UI">UI</h2>
 <ul>
 <li><span class="done0"></span>gradient hover state needs to shift right, not left. Left side should be just the darker blue</li>
@@ -56,11 +65,14 @@ ul.task-list{list-style: none;}
 <li><a href="https://github.com/ethereum/EIPs/pull/4346">https://github.com/ethereum/EIPs/pull/4346</a></li>
 <li>see <a href="#L2 notes" title="wikilink">#L2 notes</a></li>
 </ul></li>
-<li><span class="done1"></span>user page in svelte but deployed as single file from serverless function:
+<li><span class="done2"></span>user page in svelte but deployed as single file from serverless function:
 <ul>
-<li><span class="done0"></span>update fleek build path</li>
+<li><span class="done4"></span>script to build and save user site in backend folder</li>
+<li><span class="done0"></span>backend to do string replace on bundle for subdomain</li>
+<li><span class="done0"></span>backend to ship bundle to web3</li>
+<li><span class="done4"></span>update fleek build path</li>
 <li><span class="done4"></span>webpack create two bundles</li>
-<li><span class="done0"></span>inline css/js into single html file:
+<li>[-] inline css/js into single html file:
 <ul>
 <li><a href="https://stackoverflow.com/questions/64206486/how-to-use-webpack-to-inline-css-and-js-into-html-and-remove-unused-styles">https://stackoverflow.com/questions/64206486/how-to-use-webpack-to-inline-css-and-js-into-html-and-remove-unused-styles</a></li>
 <li><a href="https://github.com/JustAGuyCoding/spotlight-webpack">https://github.com/JustAGuyCoding/spotlight-webpack</a></li>
