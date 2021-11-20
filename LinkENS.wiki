@@ -1,5 +1,14 @@
 = LinkENS =
 
+== Running Expenses ==
+
+* Netlify Functions: 125k requests and 100h per month, free
+* Fleek: 250min build and 50GB bandwidth, free
+* Storage: 1TB for 1yr, free
+* ENS: $5USD + gas per year
+* DNS: $8.35USD 2 years
+* Email: $10.10 USD 1 year
+
 == UI ==
 
 * [ ] gradient hover state needs to shift right, not left. Left side should be just the darker blue
@@ -21,10 +30,13 @@
   * https://discord.com/channels/742384562646286509/888239500130672640/903162058110042132
   * https://github.com/ethereum/EIPs/pull/4346
   * see [[#L2 notes]]
-* [.] user page in svelte but deployed as single file from serverless function:
-  * [ ] update fleek build path
+* [o] user page in svelte but deployed as single file from serverless function:
+  * [X] script to build and save user site in backend folder
+  * [ ] backend to do string replace on bundle for subdomain
+  * [ ] backend to ship bundle to web3
+  * [X] update fleek build path
   * [X] webpack create two bundles
-  * [ ] inline css/js into single html file:
+  * [-] inline css/js into single html file:
     * https://stackoverflow.com/questions/64206486/how-to-use-webpack-to-inline-css-and-js-into-html-and-remove-unused-styles
     * https://github.com/JustAGuyCoding/spotlight-webpack
     * https://github.com/jantimon/html-webpack-plugin#writing-your-own-templates
