@@ -98,6 +98,16 @@ ul.task-list{list-style: none;}
 <li><span class="done0"></span>validation icon does not always match the provided value, can happen when typing too slow</li>
 <li><span class="done0"></span>on confirmation screen, the avatar has a higher index then the connect wallet modal</li>
 <li><span class="done0"></span>final button should just say publish but trigger connect wallet if not connected</li>
+<li><span class="done0"></span>avatar does not seem to be saved, a recent example:
+<ul>
+<li><a href="https://ropsten.etherscan.io/address/0x42D63ae25990889E35F215bC95884039Ba354115#readContract">https://ropsten.etherscan.io/address/0x42D63ae25990889E35F215bC95884039Ba354115#readContract</a>
+<ul>
+<li>call <code>text</code> with <code>0x594aa35033eb33efbdf97912b440c4dac7e476b596a4fe03564dd55ccd76cc8c</code> and <code>avatar</code></li>
+</ul></li>
+<li>Transaction: <a href="https://ropsten.etherscan.io/tx/0x4886559fce4053c79a974dae0925379d1ea6ba27c02ec5db5750889dae1c68a8">https://ropsten.etherscan.io/tx/0x4886559fce4053c79a974dae0925379d1ea6ba27c02ec5db5750889dae1c68a8</a></li>
+<li>I think its being missed in the publish routine based on the input data</li>
+</ul></li>
+<li><span class="done0"></span>deploy function does <em>zero</em> checks on subdomain value before replacing in an HTML file. Need to sanitize so that we're not a vector for malware</li>
 </ul>
 <h2 id="L2 notes">L2 notes</h2>
 <p>L2 subdomains are pretty straightforward but the biggest gap is a lack of support from clients. We would want to have support in Metamask, mobile wallets, and Cloudflare's CDN thing before going down this path. We <em>could</em> do L1 subdomains with L2 record resolvers. This would require two transactions: one on L1 and one on L2. We could have the user pay the gas fees plus a small fee to register an L1 subdomain then use the profits to update the rest of the records on L2. To avoid getting cleaned out, we would only do the initial record setting. Any changes would be on the user to perform from their wallet.</p>
