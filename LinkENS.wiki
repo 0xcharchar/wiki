@@ -59,6 +59,12 @@
 * [ ] validation icon does not always match the provided value, can happen when typing too slow
 * [ ] on confirmation screen, the avatar has a higher index then the connect wallet modal
 * [ ] final button should just say publish but trigger connect wallet if not connected
+* [ ] avatar does not seem to be saved, a recent example:
+  * https://ropsten.etherscan.io/address/0x42D63ae25990889E35F215bC95884039Ba354115#readContract
+    * call `text` with `0x594aa35033eb33efbdf97912b440c4dac7e476b596a4fe03564dd55ccd76cc8c` and `avatar`
+  * Transaction: https://ropsten.etherscan.io/tx/0x4886559fce4053c79a974dae0925379d1ea6ba27c02ec5db5750889dae1c68a8
+  * I think its being missed in the publish routine based on the input data
+* [ ] deploy function does _zero_ checks on subdomain value before replacing in an HTML file. Need to sanitize so that we're not a vector for malware
 
 == L2 notes ==
 
