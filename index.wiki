@@ -42,6 +42,8 @@ Below is a list of projects I have worked on or am working on.
 
 * [[Frontend]]
 * [[Zero knowledge]]
+* [[dotfiles]]
+* [[blockchain]]
 
 == Watching ==
 
