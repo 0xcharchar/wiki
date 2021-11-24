@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+<title>dotfiles</title>
+
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+<link rel="stylesheet" href="/wiki/style.css" />
+</head>
+
+<body>
+<header id="banner">
+<h1><a href="/wiki">charchar.eth wiki</a></h1>
+<nav>
+<ul>
+<li><a href="/wiki">Home</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<h1 id="Dotfiles">Dotfiles</h1>
+<p>Using:</p>
+<ul>
+<li>suckless-terminal (st)</li>
+<li>vim 8</li>
+<li>tmux 3</li>
+</ul>
+<h2 id="~/.tmux.conf">~/.tmux.conf</h2>
+<pre class="tmux"><code>set-window-option -g mode-key vi
+set -g default-terminal &quot;screen-256color&quot;
+
+# split
+bind | split-window -h -c &quot;#{pane_current_path}&quot;
+bind - split-window -v -c &quot;#{pane_current_path}&quot;
+unbind &#39;&quot;&#39;
+unbind %
+
+# vim pane movement
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# reload config
+bind-key r source-file ~/.tmux.conf \; display-message &quot;tmux conf reloaded&quot;
+
+## COLORSCHEME: gruvbox dark (medium)
+## https://github.com/egel/tmux-gruvbox
+set-option -g status &quot;on&quot;
+
+# default statusbar color
+set-option -g status-style bg=colour237,fg=colour223 # bg=bg1, fg=fg1
+
+# default window title colors
+set-window-option -g window-status-style bg=colour214,fg=colour237 # bg=yellow, fg=bg1
+
+# default window with an activity alert
+set-window-option -g window-status-activity-style bg=colour237,fg=colour248 # bg=bg1, fg=fg3
+
+# active window title colors
+set-window-option -g window-status-current-style bg=red,fg=colour237 # fg=bg1
+
+# pane border
+set-option -g pane-active-border-style fg=colour250 #fg2
+set-option -g pane-border-style fg=colour237 #bg1
+
+# message infos
+set-option -g message-style bg=colour239,fg=colour223 # bg=bg2, fg=fg1
+
+# writing commands inactive
+set-option -g message-command-style bg=colour239,fg=colour223 # bg=fg3, fg=bg1
+
+# pane number display
+set-option -g display-panes-active-colour colour250 #fg2
+set-option -g display-panes-colour colour237 #bg1
+
+# clock
+set-window-option -g clock-mode-colour colour109 #blue
+
+# bell
+set-window-option -g window-status-bell-style bg=colour167,fg=colour235 # bg=red, fg=bg
+
+## Theme settings mixed with colors (unfortunately, but there is no cleaner way)
+set-option -g status-justify &quot;left&quot;
+set-option -g status-left-style none
+set-option -g status-left-length &quot;80&quot;
+set-option -g status-right-style none
+set-option -g status-right-length &quot;80&quot;
+set-window-option -g window-status-separator &quot;&quot;
+
+set-option -g status-left &quot;#[bg=colour241,fg=colour248] #S &quot;
+set-option -g status-right &quot;#[bg=colour239,fg=colour246] %Y-%m-%d %H:%M #[bg=colour248,fg=colour237] #h &quot;
+
+set-window-option -g window-status-current-format &quot;#[bg=colour214,fg=colour239] #I #W#{?window_zoomed_flag,*Z,} &quot;
+set-window-option -g window-status-format &quot;#[bg=colour239,fg=colour223] #I #W &quot;
+
+## COLORSCHEME END</code></pre>
+<h2 id="~/.vimrc">~/.vimrc</h2>
+<pre class="vim"><code>set nocompatible
+
+autocmd vimenter * ++nested colorscheme gruvbox
+set background=dark
+
+syntax on
+filetype plugin indent on
+set modelines=0
+set number
+set ruler
+set visualbell
+set encoding=utf-8
+
+set wrap
+set textwidth=80
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set noshiftround
+
+set scrolloff=3
+set backspace=indent,eol,start</code></pre>
+<h2 id="Vim plugins">Vim plugins</h2>
+<ul>
+<li>gruvbox -&gt; retro colorscheme</li>
+<li>vimwiki</li>
+</ul>
+</main>
+
+<footer>
+<p>
+Unless otherwise noted on the page, text is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and original code samples are under  <a href="https://choosealicense.com/licenses/unlicense/">Unlicense</a>.
+</p>
+</footer>
+</body>
+</html>
