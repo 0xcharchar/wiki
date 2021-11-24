@@ -1,6 +1,3 @@
 = Uniswap UI with Svelte =
 
-Interesting things about Uniswap UI:
-
-* background gradient is a giant div with a radial gradient
-* 
+Rewrote the UI of Uniswap with Svelte. Then I lost it all in a VM failure
