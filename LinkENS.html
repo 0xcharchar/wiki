@@ -65,11 +65,11 @@ ul.task-list{list-style: none;}
 <li><a href="https://github.com/ethereum/EIPs/pull/4346">https://github.com/ethereum/EIPs/pull/4346</a></li>
 <li>see <a href="#L2 notes" title="wikilink">#L2 notes</a></li>
 </ul></li>
-<li><span class="done2"></span>user page in svelte but deployed as single file from serverless function:
+<li><span class="done4"></span>user page in svelte but deployed as single file from serverless function:
 <ul>
 <li><span class="done4"></span>script to build and save user site in backend folder</li>
-<li><span class="done0"></span>backend to do string replace on bundle for subdomain</li>
-<li><span class="done0"></span>backend to ship bundle to web3</li>
+<li><span class="done4"></span>backend to do string replace on bundle for subdomain</li>
+<li><span class="done4"></span>backend to ship bundle to web3</li>
 <li><span class="done4"></span>update fleek build path</li>
 <li><span class="done4"></span>webpack create two bundles</li>
 <li>[-] inline css/js into single html file:
@@ -107,7 +107,7 @@ ul.task-list{list-style: none;}
 <li>Transaction: <a href="https://ropsten.etherscan.io/tx/0x4886559fce4053c79a974dae0925379d1ea6ba27c02ec5db5750889dae1c68a8">https://ropsten.etherscan.io/tx/0x4886559fce4053c79a974dae0925379d1ea6ba27c02ec5db5750889dae1c68a8</a></li>
 <li>I think its being missed in the publish routine based on the input data</li>
 </ul></li>
-<li><span class="done0"></span>deploy function does <em>zero</em> checks on subdomain value before replacing in an HTML file. Need to sanitize so that we're not a vector for malware</li>
+<li><span class="done4"></span>deploy function does <em>zero</em> checks on subdomain value before replacing in an HTML file. Need to sanitize so that we're not a vector for malware</li>
 </ul>
 <h2 id="L2 notes">L2 notes</h2>
 <p>L2 subdomains are pretty straightforward but the biggest gap is a lack of support from clients. We would want to have support in Metamask, mobile wallets, and Cloudflare's CDN thing before going down this path. We <em>could</em> do L1 subdomains with L2 record resolvers. This would require two transactions: one on L1 and one on L2. We could have the user pay the gas fees plus a small fee to register an L1 subdomain then use the profits to update the rest of the records on L2. To avoid getting cleaned out, we would only do the initial record setting. Any changes would be on the user to perform from their wallet.</p>
