@@ -30,10 +30,10 @@
   * https://discord.com/channels/742384562646286509/888239500130672640/903162058110042132
   * https://github.com/ethereum/EIPs/pull/4346
   * see [[#L2 notes]]
-* [o] user page in svelte but deployed as single file from serverless function:
+* [X] user page in svelte but deployed as single file from serverless function:
   * [X] script to build and save user site in backend folder
-  * [ ] backend to do string replace on bundle for subdomain
-  * [ ] backend to ship bundle to web3
+  * [X] backend to do string replace on bundle for subdomain
+  * [X] backend to ship bundle to web3
   * [X] update fleek build path
   * [X] webpack create two bundles
   * [-] inline css/js into single html file:
@@ -64,7 +64,7 @@
     * call `text` with `0x594aa35033eb33efbdf97912b440c4dac7e476b596a4fe03564dd55ccd76cc8c` and `avatar`
   * Transaction: https://ropsten.etherscan.io/tx/0x4886559fce4053c79a974dae0925379d1ea6ba27c02ec5db5750889dae1c68a8
   * I think its being missed in the publish routine based on the input data
-* [ ] deploy function does _zero_ checks on subdomain value before replacing in an HTML file. Need to sanitize so that we're not a vector for malware
+* [X] deploy function does _zero_ checks on subdomain value before replacing in an HTML file. Need to sanitize so that we're not a vector for malware
 
 == L2 notes ==
 
