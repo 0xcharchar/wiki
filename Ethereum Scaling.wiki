@@ -1,0 +1,11 @@
+= Ethereum Scaling =
+
+* Optimistic rollups:
+  * Arbitrum
+  * Optimism
+* Zero-knowledge:
+  * zkSync
+  * Starknet
+  * Something from Polygon
+* Side chains:
+  * Polygon

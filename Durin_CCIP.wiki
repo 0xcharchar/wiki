@@ -1,0 +1,33 @@
+= Durin & CCIP =
+
+Durin is the original version of CCIP-Read. It provides a way for Ethereum L1
+contracts to specify offchain data lookup.
+
+* EIP: https://eips.ethereum.org/EIPS/eip-3668
+* Discussion: https://ethereum-magicians.org/t/durin-secure-offchain-data-retrieval/6728
+* Examples:
+  * @makoto: https://github.com/makoto/durin-examples/tree/master/examples/template
+  * ccip-read: https://github.com/smartcontractkit/ccip-read
+
+Rough diagram of core components:
+
+{{./images/ccip-read.png}}
+
+== Proofs ==
+
+* implementation dependant
+* can't be faked by an attacker
+* need to be validated on L1
+
+An example from CCIP-Read repository using Optimism as the data source:
+
+1. The gateway:
+  1. gets the state batch header
+  2. constructs a Merkle proof
+  3. gets the L2 contract address and slot that contains the required data
+  4. gets a proof from Optimism rollup (via `eth_getProof`) using address and slot
+  5. returns the state, proof, and wintess
+2. The client passes on the information to the L1 function `functionNameWithProof`
+3. The L1 function:
+  1. verifies the proof
+  2. returns the data to the user
