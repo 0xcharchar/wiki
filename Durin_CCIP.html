@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+<title>Durin_CCIP</title>
+
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+<link rel="stylesheet" href="/wiki/style.css" />
+</head>
+
+<body>
+<header id="banner">
+<h1><a href="/wiki">charchar.eth wiki</a></h1>
+<nav>
+<ul>
+<li><a href="/wiki">Home</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<h1 id="Durin &amp; CCIP">Durin &amp; CCIP</h1>
+<p>Durin is the original version of CCIP-Read. It provides a way for Ethereum L1 contracts to specify offchain data lookup.</p>
+<ul>
+<li>EIP: <a href="https://eips.ethereum.org/EIPS/eip-3668">https://eips.ethereum.org/EIPS/eip-3668</a></li>
+<li>Discussion: <a href="https://ethereum-magicians.org/t/durin-secure-offchain-data-retrieval/6728">https://ethereum-magicians.org/t/durin-secure-offchain-data-retrieval/6728</a></li>
+<li>Examples:
+<ul>
+<li>@makoto: <a href="https://github.com/makoto/durin-examples/tree/master/examples/template">https://github.com/makoto/durin-examples/tree/master/examples/template</a></li>
+<li>ccip-read: <a href="https://github.com/smartcontractkit/ccip-read">https://github.com/smartcontractkit/ccip-read</a></li>
+</ul></li>
+</ul>
+<p>Rough diagram of core components:</p>
+<p><img src="./images/ccip-read.png" alt="" /></p>
+<h2 id="Proofs">Proofs</h2>
+<ul>
+<li>implementation dependant</li>
+<li>can't be faked by an attacker</li>
+<li>need to be validated on L1</li>
+</ul>
+<p>An example from CCIP-Read repository using Optimism as the data source:</p>
+<ol>
+<li>The gateway:
+<ol>
+<li>gets the state batch header</li>
+<li>constructs a Merkle proof</li>
+<li>gets the L2 contract address and slot that contains the required data</li>
+<li>gets a proof from Optimism rollup (via <code>eth_getProof</code>) using address and slot</li>
+<li>returns the state, proof, and wintess</li>
+</ol></li>
+<li>The client passes on the information to the L1 function <code>functionNameWithProof</code></li>
+<li>The L1 function:
+<ol>
+<li>verifies the proof</li>
+<li>returns the data to the user</li>
+</ol></li>
+</ol>
+</main>
+
+<footer>
+<p>
+Unless otherwise noted on the page, text is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and original code samples are under  <a href="https://choosealicense.com/licenses/unlicense/">Unlicense</a>.
+</p>
+</footer>
+</body>
+</html>
