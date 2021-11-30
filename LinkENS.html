@@ -31,6 +31,19 @@ ul.task-list{list-style: none;}
 
 <main>
 <h1 id="LinkENS">LinkENS</h1>
+<p>Contents:</p>
+<ul>
+<li><a href="#Running Expenses" title="wikilink">#Running Expenses</a></li>
+<li><a href="#Tasks" title="wikilink">#Tasks</a>
+<ul>
+<li><a href="#UI" title="wikilink">#UI</a></li>
+<li><a href="#Features" title="wikilink">#Features</a></li>
+<li><a href="#Admin" title="wikilink">#Admin</a></li>
+</ul></li>
+<li><a href="#Bugs" title="wikilink">#Bugs</a></li>
+<li><a href="#L2 notes" title="wikilink">#L2 notes</a></li>
+<li><a href="#Architecture" title="wikilink">#Architecture</a></li>
+</ul>
 <h2 id="Running Expenses">Running Expenses</h2>
 <ul>
 <li>Netlify Functions: 125k requests and 100h per month, free</li>
@@ -40,7 +53,8 @@ ul.task-list{list-style: none;}
 <li>DNS: $8.35USD 2 years</li>
 <li>Email: $10.10 USD 1 year</li>
 </ul>
-<h2 id="UI">UI</h2>
+<h2 id="Tasks">Tasks</h2>
+<h3 id="UI">UI</h3>
 <ul>
 <li><span class="done0"></span>gradient hover state needs to shift right, not left. Left side should be just the darker blue</li>
 <li><span class="done4"></span>hover state for text links in menu</li>
@@ -56,7 +70,7 @@ ul.task-list{list-style: none;}
 <li><span class="done0"></span>button shadows</li>
 <li><span class="done0"></span>mobile style</li>
 </ul>
-<h2 id="Features">Features</h2>
+<h3 id="Features">Features</h3>
 <ul>
 <li><span class="done4"></span>connect wallet</li>
 <li>[-] L2 subdomains and resolvers:
@@ -80,12 +94,17 @@ ul.task-list{list-style: none;}
 <li><a href="https://www.npmjs.com/package/style-ext-html-webpack-plugin">https://www.npmjs.com/package/style-ext-html-webpack-plugin</a></li>
 </ul></li>
 </ul></li>
-<li><span class="done0"></span>form validations</li>
+<li><span class="done1"></span>form validations:
+<ul>
+<li><span class="done4"></span>select subdomain</li>
+<li><span class="done0"></span>CID fields</li>
+<li><span class="done0"></span>URL fields</li>
+</ul></li>
 <li><span class="done0"></span>serverless function accept profile data</li>
 <li><span class="done0"></span>user page preview</li>
 <li><span class="done0"></span>marketing/landing page</li>
 </ul>
-<h2 id="Admin">Admin</h2>
+<h3 id="Admin">Admin</h3>
 <ul>
 <li><span class="done0"></span>move email hosting somewhere else (current host only allows one user and I'm trying not to dox myself)</li>
 <li><span class="done0"></span>deploy latest SiteManager contract</li>
@@ -115,8 +134,10 @@ ul.task-list{list-style: none;}
 <ul>
 <li><a href="https://community.optimism.io/docs/developers/tutorials.html">https://community.optimism.io/docs/developers/tutorials.html</a></li>
 <li><a href="https://github.com/ethereum-optimism/optimism-tutorial/tree/main/hardhat">https://github.com/ethereum-optimism/optimism-tutorial/tree/main/hardhat</a></li>
-<li>blocked because openvpn and docker-compose not playing nicely</li>
 </ul>
+<h2 id="Architecture">Architecture</h2>
+<p>Prcoess flow:</p>
+<p><img src="./images/linkens-hackathon.png" alt="" /></p>
 </main>
 
 <footer>
