@@ -1,5 +1,16 @@
 = LinkENS =
 
+Contents:
+
+* [[#Running Expenses]]
+* [[#Tasks]]
+  * [[#UI]]
+  * [[#Features]]
+  * [[#Admin]]
+* [[#Bugs]]
+* [[#L2 notes]]
+* [[#Architecture]]
+
 == Running Expenses ==
 
 * Netlify Functions: 125k requests and 100h per month, free
@@ -9,7 +20,9 @@
 * DNS: $8.35USD 2 years
 * Email: $10.10 USD 1 year
 
-== UI ==
+== Tasks ==
+
+=== UI ===
 
 * [ ] gradient hover state needs to shift right, not left. Left side should be just the darker blue
 * [X] hover state for text links in menu
@@ -23,7 +36,7 @@
 * [ ] button shadows
 * [ ] mobile style
 
-== Features ==
+=== Features ===
 
 * [X] connect wallet
 * [-] L2 subdomains and resolvers:
@@ -41,12 +54,15 @@
     * https://github.com/JustAGuyCoding/spotlight-webpack
     * https://github.com/jantimon/html-webpack-plugin#writing-your-own-templates
     * https://www.npmjs.com/package/style-ext-html-webpack-plugin
-* [ ] form validations
+* [.] form validations:
+  * [X] select subdomain
+  * [ ] CID fields
+  * [ ] URL fields
 * [ ] serverless function accept profile data
 * [ ] user page preview
 * [ ] marketing/landing page
 
-== Admin ==
+=== Admin ===
 
 * [ ] move email hosting somewhere else (current host only allows one user and I'm trying not to dox myself)
 * [ ] deploy latest SiteManager contract
@@ -74,4 +90,9 @@ Optimism setup:
 
 * https://community.optimism.io/docs/developers/tutorials.html
 * https://github.com/ethereum-optimism/optimism-tutorial/tree/main/hardhat
-* blocked because openvpn and docker-compose not playing nicely
+
+== Architecture ==
+
+Prcoess flow:
+
+{{./images/linkens-hackathon.png}}
