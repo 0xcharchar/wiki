@@ -58,9 +58,13 @@ Contents:
   * [X] select subdomain
   * [ ] CID fields
   * [ ] URL fields
-* [ ] serverless function accept profile data
+* [X] serverless function accept profile data:
+  * [X] create template that supports hardcoded data
+  * [X] version inputs
+  * [X] version specific page building
 * [ ] user page preview
 * [ ] marketing/landing page
+* [ ] use IPNS for contenthash
 
 === Admin ===
 

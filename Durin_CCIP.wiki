@@ -15,6 +15,8 @@ Rough diagram of core components:
 
 == Proofs ==
 
+The trickiest part of the equation, proofs have the following properties:
+
 * implementation dependant
 * can't be faked by an attacker
 * need to be validated on L1
