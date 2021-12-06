@@ -2,7 +2,7 @@
 
 Using:
 
-* suckless-terminal (st)
+* suckless-terminal (st) or iterm2
 * vim 8
 * tmux 3
 
@@ -96,13 +96,11 @@ set ruler
 set visualbell
 set encoding=utf-8
 
-set wrap
-set textwidth=80
+set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set expandtab
-set noshiftround
+set colorcolumn=80 " highlight col 80 but don't force break
 
 set scrolloff=3
 set backspace=indent,eol,start
@@ -112,15 +110,18 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 
 === Vim plugins ===
 
-* gruvbox -> retro colorscheme
-* vimwiki
-* ctrlp
-* vim-javascript
-* vim-svelte
-* vim-solidity
+* [[https://github.com/morhetz/gruvbox.git|gruvbox]] -> retro colorscheme
+* [[https://github.com/vimwiki/vimwiki.git|vimwiki]]
+* [[https://github.com/ctrlpvim/ctrlp.vim.git|ctrlp]]
+* [[https://github.com/pangloss/vim-javascript.git|vim-javascript]]
+* [[https://github.com/evanleck/vim-svelte.git|vim-svelte]]
+* [[https://github.com/thesis/vim-solidity.git|vim-solidity]]
 
 == ~/.zshrc ==
-{{{shell
+
+Start with install oh-my-zsh: https://ohmyz.sh/#install
+
+{{{zsh
 # Path to your oh-my-zsh installation.
 #export ZSH=""
 
@@ -155,5 +156,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # make sure nix profile is up
-. ~/.nix-profile/etc/profile.d/nix.sh
+#. ~/.nix-profile/etc/profile.d/nix.sh
 }}}
+
+== iterm ==
+
+Set colours: [[https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Gruvbox%20Dark.itermcolors|Gruvbox Dark]]
