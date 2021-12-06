@@ -1,0 +1,15 @@
+= Faucets =
+
+== Ethereum ==
+
+* Ropsten (5 ETH): https://faucet.dimensions.network/
+* Rinkeby (0.1 ETH): https://faucets.chain.link/rinkeby Also has the following:
+  * Arbitrum Rinkeby
+  * Avalanch Fuji
+  * BSC Testnet
+  * Ethereum Kovan
+  * Fantom Testnet
+  * POA Network Sokol
+  * Polygon Mumbai
+* Goerli: who fucking knows
+* Kovan (0.001 ETH): https://ethdrop.dev/

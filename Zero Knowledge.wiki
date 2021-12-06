@@ -1,4 +1,10 @@
 = Zero Knowledge =
 
-https://medium.com/@ben_longstaff/secure-multi-party-computation-smpc-explained-visually-ecde155fc7c0
+* https://starkware.co/tech-stack/
+* https://starkware.co/starkex/
 
+* Starkware for ZK proofs (using Cairo)
+  * dapps:
+    * dydx
+    * immutablex
+* Starknet is a generic ZK rollup
