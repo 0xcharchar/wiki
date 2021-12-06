@@ -130,12 +130,54 @@ set expandtab
 set noshiftround
 
 set scrolloff=3
-set backspace=indent,eol,start</code></pre>
-<h2 id="Vim plugins">Vim plugins</h2>
+set backspace=indent,eol,start
+
+let g:ctrlp_user_command = [&#39;.git&#39;, &#39;cd %s &amp;&amp; git ls-files -co --exclude-standard&#39;]</code></pre>
+<h3 id="Vim plugins">Vim plugins</h3>
 <ul>
 <li>gruvbox -&gt; retro colorscheme</li>
 <li>vimwiki</li>
+<li>ctrlp</li>
+<li>vim-javascript</li>
+<li>vim-svelte</li>
+<li>vim-solidity</li>
 </ul>
+<h2 id="~/.zshrc">~/.zshrc</h2>
+<pre class="shell"><code># Path to your oh-my-zsh installation.
+#export ZSH=&quot;&quot;
+
+ZSH_THEME=&quot;gozilla-charchar&quot;
+
+HYPHEN_INSENSITIVE=&quot;true&quot;
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle &#39;:omz:update&#39; mode disabled  # disable automatic updates
+# zstyle &#39;:omz:update&#39; mode auto      # update automatically without asking
+zstyle &#39;:omz:update&#39; mode reminder  # just remind me to update when it&#39;s time
+
+# Uncomment the following line to change how often to auto-update (in days).
+zstyle &#39;:omz:update&#39; frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=&quot;true&quot;
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+DISABLE_UNTRACKED_FILES_DIRTY=&quot;true&quot;
+
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+export EDITOR=&#39;vim&#39;
+
+export NVM_DIR=&quot;$HOME/.nvm&quot;
+[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot;  # This loads nvm
+[ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \. &quot;$NVM_DIR/bash_completion&quot;  # This loads nvm bash_completion
+
+# make sure nix profile is up
+. ~/.nix-profile/etc/profile.d/nix.sh</code></pre>
 </main>
 
 <footer>
