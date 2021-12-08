@@ -104,5 +104,4 @@ Stuff I am keeping an eye on but probably not working on directly
 * https://wiki.lobby.so/
 * https://www.lua.org/cgi-bin/demo
 * https://l2fees.info/
-* https://gitcoin.co/blog/announcing-grants-round-12/
 * https://youtu.be/js4HLK4MyQI?t=1088
