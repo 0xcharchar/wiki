@@ -1,0 +1,55 @@
+= me3 =
+
+== Tasks ==
+
+=== UI ===
+
+* [.] redesign:
+  * [.] pages:
+    * [X] select subdomain
+    * [ ] social profiles form
+    * [ ] confirmation
+    * [ ] user profile preview
+    * [ ] marketing/landing page
+  * [.] sections:
+    * [X] header
+    * [ ] publishing state
+    * [ ] validations
+    * [ ] social icon set
+    * [ ] functional icon set
+* [ ] mobile style
+* [ ] dark mode
+
+=== Features ===
+
+* [.] form validations:
+  * [X] select subdomain
+  * [ ] CID fields
+  * [ ] URL fields
+* [o] use IPNS for contenthash:
+  * [X] ipns-update function
+  * [ ] can we programatically determine the CID, on new sites, before the 2min process finishes?
+
+=== Admin ===
+
+* [ ] move email hosting somewhere else (current host only allows one user):
+  * Inb0x from Parallel
+  * Ethmail.cc
+* [ ] deploy latest SiteManager contract:
+  * [ ] determine gas cost difference between SiteManagerLite and minimal SiteManager request
+* [ ] figure out IPFS node hosting
+* [ ] figure out Netlify costs vs running an API vs finding another serverless provider
+
+== Bugs ==
+
+* [ ] if the domain search triggers while backspacing and the user completely empties the input box, validation status of the intermediate search still exists
+* [X] if selecting a wallet and metamask is not connected, the profile icon still shows but is empty, button never returns
+* [ ] validation icon does not always match the provided value, can happen when typing too slow
+* [ ] on confirmation screen, the avatar has a higher index then the connect wallet modal
+* [ ] final button should just say publish but trigger connect wallet if not connected
+* [ ] avatar does not seem to be saved, a recent example:
+  * https://ropsten.etherscan.io/address/0x42D63ae25990889E35F215bC95884039Ba354115#readContract
+    * call `text` with `0x594aa35033eb33efbdf97912b440c4dac7e476b596a4fe03564dd55ccd76cc8c` and `avatar`
+  * Transaction: https://ropsten.etherscan.io/tx/0x4886559fce4053c79a974dae0925379d1ea6ba27c02ec5db5750889dae1c68a8
+  * I think its being missed in the publish routine based on the input data
+
