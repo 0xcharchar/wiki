@@ -46,6 +46,7 @@ Below is a list of projects I have worked on or am working on.
 * [[dotfiles]]
 * [[blockchain]]
 * [[Durin_CCIP]]
+* [[Storage]]
 
 == Watching ==
 
@@ -96,8 +97,6 @@ Stuff I am keeping an eye on but probably not working on directly
 * https://metamask.zendesk.com/hc/en-us/articles/4403700785691-Using-Optimistic-Ethereum-with-MetaMask
 * https://github.com/Arachnid/EIPs/blob/8d4a83093b9b9f4e2a17e38693edaf360b5af84a/EIPS/eip-2544.md
 * https://docs.google.com/document/d/1zulImV8eZ_GuOiO-7qHl13vYbHMPiPVO4OF_U2vwG1g/edit#heading=h.47h4v7g30858
-* Aragon DAO Global Hackathon: https://blog.aragon.org/2021-dao-global-hackathon/
-* Pinata requires a path on the Readable stream: https://github.com/PinataCloud/Pinata-SDK/issues/28
 * https://www.willpeavy.com/tools/minifier/
 * https://discourse.sourcecred.io/t/a-better-onboarding/767
 * https://cryptopunksnotdead.github.io/
