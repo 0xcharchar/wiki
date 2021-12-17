@@ -4,11 +4,11 @@
 
 === UI ===
 
-* [.] redesign:
-  * [.] pages:
+* [o] redesign:
+  * [o] pages:
     * [X] select subdomain
-    * [ ] social profiles form
-    * [ ] confirmation
+    * [X] social profiles form
+    * [X] confirmation
     * [ ] user profile preview
     * [ ] marketing/landing page
   * [.] sections:
@@ -17,7 +17,12 @@
     * [ ] validations
     * [ ] social icon set
     * [ ] functional icon set
-* [ ] mobile style
+* [O] mobile style:
+  * [X] basic menu
+  * [X] header spacing
+  * [X] body spacing
+  * [ ] form spacing
+  * [X] card spacing
 * [ ] dark mode
 
 === Features ===
