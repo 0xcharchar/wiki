@@ -5,7 +5,8 @@
   * Optimism
 * Zero-knowledge:
   * zkSync
-  * Starknet
+  * Starknet:
+    * [[Cairo-lang]]
   * Something from Polygon
 * Side chains:
   * Polygon

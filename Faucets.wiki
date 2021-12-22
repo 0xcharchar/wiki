@@ -2,6 +2,7 @@
 
 == Ethereum ==
 
+* All the networks: https://faucet.paradigm.xyz/
 * Ropsten (5 ETH): https://faucet.dimensions.network/
 * Rinkeby (0.1 ETH): https://faucets.chain.link/rinkeby Also has the following:
   * Arbitrum Rinkeby

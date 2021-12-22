@@ -6,3 +6,4 @@
 
 * Pinata:
   * SDK requires a path on the Readable stream: https://github.com/PinataCloud/Pinata-SDK/issues/28
+* web3.storage

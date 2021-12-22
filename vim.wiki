@@ -1,0 +1,27 @@
+= Vim =
+
+Various snippets and things I frequently forget
+
+== JSON ==
+
+=== JS to JSON ===
+
+Copying a Javascript object out of code and into its own JSON file involves a
+painful process of quoting things. This snippet will wrap quotes around each
+key:
+
+```regex
+:%s/\zs[a-z]\+\ze:/"\0"/g
+```
+
+* `\zs` and `\ze` mark the start/end of the pattern
+* `[a-z]\+` gets any number of lowercase alpha characters, should be updated
+  for more complex keys
+* `:` to make sure the key is grabbed and not random words
+* `"\0"` is the entire match, inside quotes
+
+=== Format JSON ===
+
+```vim
+:%!python -m json.tool
+```

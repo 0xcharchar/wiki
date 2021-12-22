@@ -44,10 +44,11 @@ Below is a list of projects I have worked on or am working on.
 * [[Zero knowledge]]
 * [[Ethereum Scaling]]
 * [[dotfiles]]
-* [[blockchain]]
 * [[Durin_CCIP]]
 * [[Storage]]
 * [[Cairo-lang]]
+* [[vim]]
+* [[Solidity]]
 
 == Watching ==
 

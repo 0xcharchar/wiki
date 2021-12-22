@@ -1,5 +1,0 @@
-= Blockchain =
-
-Testnet faucets:
-
-* https://faucet.paradigm.xyz/
