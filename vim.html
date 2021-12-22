@@ -5,7 +5,7 @@
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 
-<title>Ethereum Scaling</title>
+<title>vim</title>
 
 <style>
 code{white-space: pre-wrap;}
@@ -30,27 +30,20 @@ ul.task-list{list-style: none;}
 </header>
 
 <main>
-<h1 id="Ethereum Scaling">Ethereum Scaling</h1>
+<h1 id="Vim">Vim</h1>
+<p>Various snippets and things I frequently forget</p>
+<h2 id="JSON">JSON</h2>
+<h3 id="JS to JSON">JS to JSON</h3>
+<p>Copying a Javascript object out of code and into its own JSON file involves a painful process of quoting things. This snippet will wrap quotes around each key:</p>
+<p>```regex :%s/\zs[a-z]\+\ze:/"\0"/g ```</p>
 <ul>
-<li>Optimistic rollups:
-<ul>
-<li>Arbitrum</li>
-<li>Optimism</li>
-</ul></li>
-<li>Zero-knowledge:
-<ul>
-<li>zkSync</li>
-<li>Starknet:
-<ul>
-<li><a href="Cairo-lang.html" title="wikilink">Cairo-lang</a></li>
-</ul></li>
-<li>Something from Polygon</li>
-</ul></li>
-<li>Side chains:
-<ul>
-<li>Polygon</li>
-</ul></li>
+<li><code>\zs</code> and <code>\ze</code> mark the start/end of the pattern</li>
+<li><code>[a-z]\+</code> gets any number of lowercase alpha characters, should be updated for more complex keys</li>
+<li><code>:</code> to make sure the key is grabbed and not random words</li>
+<li><code>"\0"</code> is the entire match, inside quotes</li>
 </ul>
+<h3 id="Format JSON">Format JSON</h3>
+<p>```vim :%!python -m json.tool ```</p>
 </main>
 
 <footer>

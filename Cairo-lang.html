@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+<title>Cairo-lang</title>
+
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+<link rel="stylesheet" href="/wiki/style.css" />
+</head>
+
+<body>
+<header id="banner">
+<h1><a href="/wiki">charchar.eth wiki</a></h1>
+<nav>
+<ul>
+<li><a href="/wiki">Home</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<h1 id="Cairo">Cairo</h1>
+<p>The language used for writing smart contracts on StarkNet.</p>
+<ul>
+<li><a href="https://www.cairo-lang.org/">Site</a></li>
+<li><a href="https://www.cairo-lang.org/playground/">Playground</a></li>
+<li><a href="https://github.com/gakonst/awesome-starknet">awesome-starknet</a></li>
+</ul>
+<h2 id="Setup">Setup</h2>
+<h3 id="Debian">Debian</h3>
+<ul>
+<li>From apt:
+<ul>
+<li>python3.7+</li>
+<li>python3-dev</li>
+<li>python3-venv</li>
+<li>pypy3-dev</li>
+<li>libgmp3-dev</li>
+</ul></li>
+</ul>
+<h2 id="Nile">Nile</h2>
+<ol>
+<li>Open project folder in terminal</li>
+<li>Source env or install nile in venv</li>
+<li>Run <code>nile node</code></li>
+<li>Open another terminal, source env</li>
+<li>Run <code>nile compile</code></li>
+<li>Run <code>nile deploy contracts/something.cairo --alias something</code></li>
+<li><a href="https://github.com/OpenZeppelin/nile#call-and-invoke">https://github.com/OpenZeppelin/nile#call-and-invoke</a></li>
+</ol>
+<h2 id="Conditionals">Conditionals</h2>
+<p>There do not seem to be any <code>else if</code> syntax. Also can't figure out <code>&amp;&amp;</code> or <code>||</code> equivalent. Current solution for <code>else if</code> is nested <code>if/else</code>:</p>
+<pre class="cairo"><code>if x == y:
+return (bit=1)
+else:
+if x == -1:
+return (bit=1)
+else:
+return (bit=0)
+end
+end</code></pre>
+<h2 id="Revoked References">Revoked References</h2>
+<p>Results from a function return statement are references. If:</p>
+<ol>
+<li>You call the same function more than once</li>
+<li>Store the value in different variables</li>
+<li>Try to use any variable besides the last one</li>
+</ol>
+<p>There will be an error.</p>
+<pre class="cairo"><code>func double(a) -&gt; (result):
+if a == 0:
+return (result=0)
+else:
+return (result=a * 2)
+end
+end
+
+# This function will fail
+func main{output_ptr : felt*}():
+# Uncomment below line to automatically create local variables and resovle references
+# alloc_locals
+
+let (x) = double(2)
+let (y) = double(4)
+
+#
+# This call will fail without alloc_locals
+# 
+serialize_word(x + y)
+return ()
+end</code></pre>
+</main>
+
+<footer>
+<p>
+Unless otherwise noted on the page, text is <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and original code samples are under  <a href="https://choosealicense.com/licenses/unlicense/">Unlicense</a>.
+</p>
+</footer>
+</body>
+</html>
