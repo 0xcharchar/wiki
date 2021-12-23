@@ -1,5 +1,9 @@
 = me3 =
 
+* [[#Tasks]]
+* [[#Bugs]]
+* [[#StarkNet]]
+
 == Tasks ==
 
 === UI ===
@@ -58,3 +62,8 @@
   * Transaction: https://ropsten.etherscan.io/tx/0x4886559fce4053c79a974dae0925379d1ea6ba27c02ec5db5750889dae1c68a8
   * I think its being missed in the publish routine based on the input data
 
+== StarkNet ==
+
+* its possible to send messages between L1 and L2, should be much quicker than optimism
+* should do initial transaction on L2, send important parts to L1 (maybe all of it?)
+* use chainlink/gelato/brink to perform final L1 resolution
