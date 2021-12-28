@@ -1,5 +1,7 @@
 = Testing Solidity =
 
+Based on notes taken while migrating [[https://github.com/me3-eth/contracts|me3 contracts]] from Hardhat to Foundry
+
 * [[#Hardhat]]
 * [[#Foundry]]
 * [[#Dapptools]]
@@ -17,7 +19,8 @@ A rewrite of [[#Dapptools]] using Rust: https://github.com/gakonst/foundry/
     
 === Different failure checks ===
 
-Using this contract:
+Sample contract that will be used for testing:
+
 {{{solidity
 contract Lol {
   function betterBeOne (int x) external {
@@ -26,7 +29,17 @@ contract Lol {
 }
 }}}
 
-A simple `try/catch`:
+==== `try/catch` with `revert/require`  ====
+
+Using a `try/catch`, run the function that is expected to fail. If it does not
+enter the `catch` it is because the function passed when it should not have. In
+this case, we force the test to fail by using `revert()`. When the function
+enters the catch block, we are on the right path. We can then use a `require` to
+validate any parts of the contract to make sure it was the correct failure.
+
+This would be a good way to test many different `require` statements in the
+called function.
+
 {{{solidity
 function testIsNotOne () public {
   try lol.betterBeOne(0) {
@@ -40,7 +53,12 @@ function testIsNotOne () public {
 }
 }}}
 
-Expect a failure (pay attention to function name):
+==== `testFail` ===
+
+When you expect a test to fail but don't need to check the message, you can
+start your function name with `testFail` and it will pass as long as a failure
+occurs
+
 {{{solidity
 function testFailWhenNotOne () public {
   lol.betterBeOne(0);
@@ -56,11 +74,54 @@ Unit testing Solidity in Solidity, written by [[https://dapp.tools/|dapphub]]: h
 * simplifies a lot of tests and provides logs via event emitting
 
 {{{solidity
-function testIsNotOne () public {
-  try lol.betterBeOne(0) {
-    fail();
-  } catch Error(string memory error) {
-    assertEq(error, "x needs to be 1");
+contract TestLol is DSTest {
+  Lol public lol;
+  
+  function setUp () public {
+    lol = new Lol();
+  }
+    
+  function testIsNotOne () public {
+    try lol.betterBeOne(0) {
+      fail();
+    } catch Error(string memory error) {
+      assertEq(error, "x needs to be 1");
+    }
   }
 }
+}}}
+
+== Hardhat ==
+
+* javascript testing framework
+* easy to integrate when already working with javascript
+* slower than other tools
+* code from tests can be used directly in source code as you essentially have to
+  do the same things (assuming no mocking)
+* the layer of abstraction requires a lot more thought
+  
+=== Deploying third-party contracts ===
+
+If you interact with existing contracts, there are two methods that you can use
+to test with them:
+
+1. [[https://hardhat.org/hardhat-network/guides/mainnet-forking.html|fork the network]] the contracts exist on
+2. if they are open source, deploy the contracts into the test network
+
+To deploy existing contracts on your network, you can create an importer
+contract. Here is an example using ENS contracts:
+
+{{{solidity
+// ENSDeploy.sol
+// SPDX-License-Identifier: MIT
+
+import "@ensdomains/ens-contracts/contracts/registry/ENSRegistry.sol";
+import "@ensdomains/ens-contracts/contracts/registry/FIFSRegistrar.sol";
+import "@ensdomains/ens-contracts/contracts/registry/ReverseRegistrar.sol";
+}}}
+
+The contracts can be added to the project with:
+
+{{{shell
+npm i --save-dev @ensdomains/ens-contracts
 }}}
