@@ -1,0 +1,66 @@
+= Testing Solidity =
+
+* [[#Hardhat]]
+* [[#Foundry]]
+* [[#Dapptools]]
+* [[#ds-test]]
+
+== Foundry ==
+
+A rewrite of [[#Dapptools]] using Rust: https://github.com/gakonst/foundry/
+
+* use `forge test`
+* test naming is very important in the test contract:
+  * functions that begin with *test* are run as tests, eg `testThatSomethinIsTrue`
+  * functions that begin with *testFail* expect some sort of revert and thus you
+    should _not_ check for failure in the test
+    
+=== Different failure checks ===
+
+Using this contract:
+{{{solidity
+contract Lol {
+  function betterBeOne (int x) external {
+    require(x == 1, "x needs to be 1");
+  }
+}
+}}}
+
+A simple `try/catch`:
+{{{solidity
+function testIsNotOne () public {
+  try lol.betterBeOne(0) {
+    revert();
+  } catch Error(string memory error) {
+    require(
+      keccak256(abi.encodePacked(error)),
+      keccak256("x needs to be 1")
+    );
+  }
+}
+}}}
+
+Expect a failure (pay attention to function name):
+{{{solidity
+function testFailWhenNotOne () public {
+  lol.betterBeOne(0);
+}
+}}}
+
+== ds-test ==
+
+Unit testing Solidity in Solidity, written by [[https://dapp.tools/|dapphub]]: https://github.com/dapphub/ds-test
+
+* provides a number of assertions
+* works with [[#Dapptools]] and [[#Foundry]]
+* simplifies a lot of tests and provides logs via event emitting
+
+{{{solidity
+function testIsNotOne () public {
+  try lol.betterBeOne(0) {
+    fail();
+  } catch Error(string memory error) {
+    assertEq(error, "x needs to be 1");
+  }
+}
+}}}
