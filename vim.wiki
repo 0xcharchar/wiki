@@ -10,9 +10,9 @@ Copying a Javascript object out of code and into its own JSON file involves a
 painful process of quoting things. This snippet will wrap quotes around each
 key:
 
-```regex
+{{{regex
 :%s/\zs[a-z]\+\ze:/"\0"/g
-```
+}}}
 
 * `\zs` and `\ze` mark the start/end of the pattern
 * `[a-z]\+` gets any number of lowercase alpha characters, should be updated
@@ -22,6 +22,6 @@ key:
 
 === Format JSON ===
 
-```vim
+{{{vim
 :%!python -m json.tool
-```
+}}}
