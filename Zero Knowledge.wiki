@@ -3,7 +3,7 @@
 * https://starkware.co/tech-stack/
 * https://starkware.co/starkex/
 
-* Starkware for ZK proofs (using Cairo)
+* Starkware for ZK proofs (using [[Cairo-lang]])
   * dapps:
     * dydx
     * immutablex
