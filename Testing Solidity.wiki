@@ -13,7 +13,7 @@ A rewrite of [[#Dapptools]] using Rust: https://github.com/gakonst/foundry/
 
 * use `forge test`
 * test naming is very important in the test contract:
-  * functions that begin with *test* are run as tests, eg `testThatSomethinIsTrue`
+  * functions that begin with *test* are run as tests, eg `testThatSomethingIsTrue`
   * functions that begin with *testFail* expect some sort of revert and thus you
     should _not_ check for failure in the test
     
@@ -29,7 +29,7 @@ contract Lol {
 }
 }}}
 
-==== `try/catch` with `revert/require`  ====
+==== try/catch with revert/require  ====
 
 Using a `try/catch`, run the function that is expected to fail. If it does not
 enter the `catch` it is because the function passed when it should not have. In
@@ -53,7 +53,7 @@ function testIsNotOne () public {
 }
 }}}
 
-==== `testFail` ===
+==== testFail ====
 
 When you expect a test to fail but don't need to check the message, you can
 start your function name with `testFail` and it will pass as long as a failure
