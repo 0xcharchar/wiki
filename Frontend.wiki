@@ -27,3 +27,7 @@ Sample jsbin: https://jsbin.com/lapafidejo/1/edit?html,css,output
 == Svelte ==
 
 * https://docs.joshuatz.com/cheatsheets/svelte-js
+
+== CSS rando ==
+
+* https://dev.to/tmns/youtube-embed-with-shadow-rounded-corners-in-all-browsers-a-love-story-5g5f
