@@ -107,7 +107,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>use <code>forge test</code></li>
 <li>test naming is very important in the test contract:
 <ul>
-<li>functions that begin with <span id="test"></span><strong>test</strong> are run as tests, eg <code>testThatSomethinIsTrue</code></li>
+<li>functions that begin with <span id="test"></span><strong>test</strong> are run as tests, eg <code>testThatSomethingIsTrue</code></li>
 <li>functions that begin with <span id="testFail"></span><strong>testFail</strong> expect some sort of revert and thus you should <em>not</em> check for failure in the test</li>
 </ul></li>
 </ul>
@@ -118,7 +118,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">require</span><span class="op">(</span>x <span class="op">==</span> <span class="dv">1</span><span class="op">,</span> <span class="st">&quot;x needs to be 1&quot;</span><span class="op">);</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<p>==== <code>try/catch</code> with <code>revert/require</code> ====</p>
+<p>==== try/catch with revert/require ====</p>
 <p>Using a <code>try/catch</code>, run the function that is expected to fail. If it does not enter the <code>catch</code> it is because the function passed when it should not have. In this case, we force the test to fail by using <code>revert()</code>. When the function enters the catch block, we are on the right path. We can then use a <code>require</code> to validate any parts of the contract to make sure it was the correct failure.</p>
 <p>This would be a good way to test many different <code>require</code> statements in the called function.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode solidity"><code class="sourceCode solidity"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span> testIsNotOne <span class="op">()</span> <span class="kw">public</span> <span class="op">{</span></span>
@@ -131,7 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">);</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<p>==== <code>testFail</code> ===</p>
+<h4 id="testFail">testFail</h4>
 <p>When you expect a test to fail but don't need to check the message, you can start your function name with <code>testFail</code> and it will pass as long as a failure occurs</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode solidity"><code class="sourceCode solidity"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span> testFailWhenNotOne <span class="op">()</span> <span class="kw">public</span> <span class="op">{</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  lol<span class="op">.</span>betterBeOne<span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>

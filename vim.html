@@ -35,7 +35,7 @@ ul.task-list{list-style: none;}
 <h2 id="JSON">JSON</h2>
 <h3 id="JS to JSON">JS to JSON</h3>
 <p>Copying a Javascript object out of code and into its own JSON file involves a painful process of quoting things. This snippet will wrap quotes around each key:</p>
-<p>```regex :%s/\zs[a-z]\+\ze:/"\0"/g ```</p>
+<pre class="regex"><code>:%s/\zs[a-z]\+\ze:/&quot;\0&quot;/g</code></pre>
 <ul>
 <li><code>\zs</code> and <code>\ze</code> mark the start/end of the pattern</li>
 <li><code>[a-z]\+</code> gets any number of lowercase alpha characters, should be updated for more complex keys</li>
@@ -43,7 +43,7 @@ ul.task-list{list-style: none;}
 <li><code>"\0"</code> is the entire match, inside quotes</li>
 </ul>
 <h3 id="Format JSON">Format JSON</h3>
-<p>```vim :%!python -m json.tool ```</p>
+<pre class="vim"><code>:%!python -m json.tool</code></pre>
 </main>
 
 <footer>
