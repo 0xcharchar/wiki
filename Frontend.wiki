@@ -31,3 +31,79 @@ Sample jsbin: https://jsbin.com/lapafidejo/1/edit?html,css,output
 == CSS rando ==
 
 * https://dev.to/tmns/youtube-embed-with-shadow-rounded-corners-in-all-browsers-a-love-story-5g5f
+
+== Wrapping `position: fixed` ==
+
+Some librarys expose an element that is `fixed` but has controls for
+top/bottom/left/right. If that is the case, you can un-fix the element by using
+a wrapper:
+
+{{{html
+<div id="container">
+  <div id="wrapper">
+    <div id="fixed-component">
+    </div>
+  </div>
+</div>
+}}}
+
+{{{css
+#container { position: relative }
+#wrapper { position: absolute }
+#fixed-component {
+  position: fixed;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+}
+}}}
+
+== Wrap store subscription in a Promise ==
+
+:svelte: :stores:
+
+Unlikely scenario but here is why I needed this:
+
+* using a third-party library which has a number of promises that trigger at
+  different times
+* using a store centralizes the information
+* need to wait for one of the promises to finish but don't have access directly
+  to the promise without some dirty work (like a constructor or factory)
+
+{{{javascript
+// Wrapped subscription in a promise
+const loadEnsName = new Promise((resolve, reject) => {
+  // if your data does not have a check, see below
+  // let initial = true
+  
+  user.subscribe(value => {
+    // value has a structure like { checked, ens: {} }
+    // if you don't have some safe value to check as part of the data
+    // you may need to use the initial check, especially if you ony want
+    // this promise to resolve on non-initial values
+    if (!value.checked) return
+    
+    /*
+    if (initial) {
+      initial = false
+      return
+    }
+    */
+
+    resolve(value.ens.name || null)
+  })
+})
+
+// Triggered by pressing a button
+async function handleConnect () {
+  // We could pass an ENS handler here but it breaks the idea behind stores and
+  // can explode for any number of sub-subscriptions
+  await connectWallet()
+
+  // Could get a bunch of values but only care about the ENS name
+  const ensName = await loadEnsName
+  if (ensName) push(`/${ensName}`)
+  else push('/setup')
+}
+}}}

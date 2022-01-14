@@ -60,6 +60,7 @@ Stuff I am keeping an eye on but probably not working on directly
 * [[Moonshot Collective]]
 * [[https://www.upupland.xyz/|upupland]] - view into various crypto projects
 * [[memes]]
+* [[DAOHaus]]
 
 == Contracts ==
 
