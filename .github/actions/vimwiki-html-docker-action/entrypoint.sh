@@ -20,11 +20,17 @@ cp .meta/style.css public_html/style.css
 # to work with
 find . -name '*.wiki' | while read file ; do
   outname=$(echo "${file}" | sed -e "s/\.wiki/\.html/g")
+  template=.meta/templates/default.html
+  if [ "$file" = "index.wiki" ]; then
+    template=.meta/templates/index.html
+  fi
 
   pandoc -f vimwiki -t html5 \
     --lua-filter=.meta/fixlinks.lua \
-    --template=.meta/templates/default.html \
+    --template="${template}" \
     --syntax-definition=.meta/solidity.xml \
+    --metadata-file=.meta/metadata.yml \
+    --variable=site-base:"https://0xcharchar.github.io/wiki"
     --highlight-style=pygments \
     --css=style.css \
     --verbose \

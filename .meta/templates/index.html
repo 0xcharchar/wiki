@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="$lang$">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="pandoc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  $if(site-base)$
+    <base href="$site-base$" />
+  $endif$
+
+    <title>charchar.eth</title>
+
+    <style>
+      $styles.html()$
+    </style>
+  $for(css)$
+    <link rel="stylesheet" href="/$css$" />
+  $endfor$
+  </head>
+
+  <body>
+    <header id="banner">
+      <h1><a href="/">charchar.eth wiki</a></h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      $body$
+    </main>
+  </body>
+</html>
