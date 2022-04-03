@@ -1,0 +1,13 @@
+= Various Addresses =
+
+To save me from searching for things on the internet.
+
+== Universal Basic Income token (UBI) from DemocracyEarth ==
+
+Kovan testnet resources: https://gov.proofofhumanity.id/t/resources-developing-on-the-kovan-testnet/776
+
+== Uniswap ==
+
+Same address whichever network it is deployed on: https://docs.uniswap.org/protocol/reference/deployments
+
+Can also use Oasis to do swaps on MKR related tokens: https://oasis.app/owner/your-addr-here?network=kovan

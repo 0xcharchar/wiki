@@ -1,3 +1,4 @@
 = Solidity =
 
 * [[Testing Solidity]]
+* Smart contract security: https://consensys.net/blog/developers/solidity-best-practices-for-smart-contract-security/

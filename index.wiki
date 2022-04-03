@@ -49,6 +49,8 @@ Below is a list of projects I have worked on or am working on.
 * [[Cairo-lang]]
 * [[vim]]
 * [[Solidity]]
+* [[go-ens]]
+* [[various addresses]]
 
 == Watching ==
 
@@ -107,3 +109,5 @@ Stuff I am keeping an eye on but probably not working on directly
 * https://www.lua.org/cgi-bin/demo
 * https://l2fees.info/
 * https://youtu.be/js4HLK4MyQI?t=1088
+* https://drive.google.com/file/d/1ElU5kQHFCLXwZ9-wncCc6uRlZbOpDd_c/view
+* https://ethereum.stackexchange.com/questions/66420/how-do-i-define-a-public-function-in-a-solidity-interface
