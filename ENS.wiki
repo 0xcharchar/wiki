@@ -21,6 +21,14 @@ const cidToHash = ipfsCid => `0x${contentHash.fromIpfs(ipfsCid)}`
 
 Reference: https://github.com/ensdomains/ui/blob/fb0d502b438289dfb3e679a7e93c83311dcee2e9/src/utils/contents.js#L90-L93
 
+== Reverse Resolver ==
+
+Using a custom resolver, two contract calls need to be made. First, update the reverse
+registry with a custom resolver using `claimWithResolver(address owner, address resolver)`.
+Next, update the `name` on the custom resolver. This requires either hardcoding or have some
+way of mapping `node` with `name`. If the custom resolver follows the `PublicResolver`,
+call `setName(bytes32 node, string name)`.
+
 == NameWrapper ==
 
 == Preimage Namehash ==
