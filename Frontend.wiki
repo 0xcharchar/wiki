@@ -108,6 +108,25 @@ async function handleConnect () {
 }
 }}}
 
+== Debounce ==
+
+For when you want to perform some async operation if no change has occurred in some time.
+
+A common example: perform a search based on input text but only if the user has stopped typing for some delay
+
+{{{javascript
+// put somewhere safe
+let timer
+const DELAY_MS = 1000
+
+// runs `cb` after DELAY_MS
+// should be run as part of an event listener on 'input'
+function debounce (cb) {
+  clearTimeout(timer)
+  timer = setTimeout(() => cb(), DELAY_MS)
+}
+}}}
+
 == Web components from Svelte ==
 
 * https://javascript.plainenglish.io/can-you-build-web-components-with-svelte-3c8bc3c1cfd8
@@ -115,3 +134,8 @@ async function handleConnect () {
 * https://www.thisdot.co/blog/web-components-with-svelte
 * https://github.com/flakolefluk/web-components-with-svelte
 * https://coryrylan.com/blog/how-to-use-web-components-in-react
+
+== Web Components in general ==
+
+* Two-way data binding with Lit: https://medium.com/collaborne-engineering/litelement-two-way-data-binding-48aec4692f7e
+* Rxjs in Lit: https://coryrylan.com/blog/using-rxjs-in-lit-web-components
